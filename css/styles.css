@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark: #222222;
+    --red: #C64832;
+    --green: #05A774;
+    --d-green: rgba(5, 167, 121, 0.5);
+    --blue-green: #5FA199;
+    --yellow: #F8E12E;
+    --l-yellow: #FFEF74;
+    --sapphire: #00A3FF;
+    --g-orange: #FFC700, #FF9900;
+    --g-orange-gold: #FFC700, #FF9900, #FFC700, #FF9900;
+    --g-sapphire: #00A3FF, #0047FF ,#00A3FF ,#0047FF;
+}
+
+body {
+    background: var(--dark);
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    /* height: 100px; */
+    background-color: var(--d-green);
+    padding: 1rem;
+}
+
+#logo {
+    width: 5rem;
+}
+
+#title {
+    width: 12rem;
+}
