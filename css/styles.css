@@ -26,15 +26,28 @@ body {
     position: fixed;
     top: 0;
     width: 100vw;
-    /* height: 100px; */
     background-color: var(--d-green);
     padding: 1rem;
+    border-radius: 0 0 1rem 1rem;
 }
 
 #logo {
-    width: 5rem;
+    width: 3rem;
 }
 
 #title {
-    width: 12rem;
+    width: 10.5rem;
+}
+
+#nav {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    background-color: var(--green);
+    padding: .8rem;
+}
+
+#nav .icon {
+    font-size: .75rem;
+    font-weight: bold;
 }
