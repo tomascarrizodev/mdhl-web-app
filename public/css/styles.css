@@ -33,12 +33,13 @@ body {
 /*! HEADER */
 
 #header {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100vw;
     background-color: var(--d-green);
     padding: 1rem;
     border-radius: 0 0 1rem 1rem;
+    z-index: 1000;
 }
 
 #logo {
@@ -57,6 +58,8 @@ body {
     background-color: #444;
     margin: 20px;
     border-radius: 5px;
+    margin-top: 15vh;
+    margin-bottom: 14vh;
 }
 
 #principal {
@@ -119,16 +122,19 @@ body {
 /*! ASIDE */
 
 #aside {
-    height: 100%;
+    position: absolute;
+    top: 15vh;
+    height: 80vh;
     width: 100vw;
     background-color: #444;
     transition: transform .5s;
+
 }
 .hide {
-    transform: translateY(-100%) translateX(100%);
+    transform: translateY(0%) translateX(100%);
 }
 .show {
-    transform: translateY(-100%) translateX(0%);
+    transform: translateY(0%) translateX(0%);
 }
 
 #aside div h4 {
@@ -164,8 +170,8 @@ body {
 /*! NAVIGATION */
 
 #nav {
-    position: absolute;
-    bottom: 0%;
+    position: fixed;
+    bottom: 0;
     width: 100vw;
     background-color: var(--green);
     padding: .8rem;

@@ -2,3 +2,8 @@
 *.rar
 edits
 tomi
+.firebase
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules

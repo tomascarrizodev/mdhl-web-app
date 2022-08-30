@@ -299,43 +299,70 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                    <!--  <tr>
-                                <td rowspan="2">10/08</td>
-                                <td>U3 and U4</td>
-                                <td>Howard A Yeager</td>
-                                <td>9:30 am</td>
-                            </tr>
-                            <tr>
-                                <td>U5 and U1</td>
-                                <td>Greenbay<td>
-                                <td>1:00 pm</td>
-                            </tr>
-                            <tr>
+
+                            <tr @click="showGame(`10-20_info`)">
                                 <td rowspan="2">10/20</td>
                                 <td>U6 and U3</td>
-                                <td>North</td>
-                                <td>9:30 am</td>
                             </tr>
-                            <tr>
+                            <tr @click="showGame(`10-20_info`)">
                                 <td>U2 and U4</td>
-                                <td>Marjorie P Hart</td>
-                                <td>1:00 pm</td>
                             </tr>
-                            <tr>
+                            <tr class="10-20_info text-end fw-bold" v-if="game === `10-20_info`">
+                                <td colspan="3">
+                                    <a @click="showGame(``)">x</a>
+                                </td>
+                            </tr>
+                            <tr class="10-20_info" v-if="game === `10-20_info`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U6-U3</span>
+                                        <span>North</span>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="10-20_info" v-if="game === `10-20_info`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U2-U4</span>
+                                        <span>Marjorie P Hart</span>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr @click="showGame(`10-27_info`)">
                                 <td rowspan="2">10/27</td>
                                 <td>U3 and U1</td>
-                                <td>AJ Katzemaier</td>
-                                <td>9:30 am</td>
                             </tr>
-                            <tr>
+                            <tr @click="showGame(`10-27_info`)">
                                 <td>U5 and U6</td>
-                                <td>Howard A Yeager</td>
-                                <td>1:00 pm</td>
+                            </tr>
+                            <tr class="10-27_info text-end fw-bold" v-if="game === `10-27_info`">
+                                <td colspan="3">
+                                    <a @click="showGame(``)">x</a>
+                                </td>
+                            </tr>
+                            <tr class="10-27_info" v-if="game === `10-27_info`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U3-U1</span>
+                                        <span>AJ Katzemaier</span>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="10-27_info" v-if="game === `10-27_info`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U5-U6</span>
+                                        <span>Howard A Yeager</span>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
-                    </table> -->
+                    </table>
                 </div>
                 <div id="principal" v-if="page === `rules`" class="d-flex flex-column justify-content-evenly align-items-center">
                     <h2>Rules</h2>
@@ -391,6 +418,25 @@
         </nav>
 
     </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDSlCQYlYI0oN4CZNZOE6xcWWD6mKR5RxE",
+          authDomain: "mdhl-web-app.firebaseapp.com",
+          projectId: "mdhl-web-app",
+          storageBucket: "mdhl-web-app.appspot.com",
+          messagingSenderId: "970764108412",
+          appId: "1:970764108412:web:270fab9c76eb67156abff9"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
