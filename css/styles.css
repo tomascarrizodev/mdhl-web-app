@@ -20,12 +20,12 @@
 
 body {
     background: var(--dark);
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 
 #app {
     height: 100vh;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
 }
@@ -33,8 +33,8 @@ body {
 /*! HEADER */
 
 #header {
-    /* position: fixed;
-    top: 0; */
+    position: sticky;
+    top: 0;
     width: 100vw;
     background-color: var(--d-green);
     padding: 1rem;
@@ -52,8 +52,7 @@ body {
 /*! CONTENT */
 
 #main {
-    height: inherit;
-    overflow: hidden;
+    /* overflow: hidden; */
     color: #fff;
     background-color: #444;
     margin: 20px;
@@ -85,11 +84,43 @@ body {
     background-color: var(--sapphire);
 }
 
+/** About */
+.about_box {
+    width: 90%;
+    margin-bottom: 15px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px 15px;
+}
+
+.arrow img {
+    width: 12px;
+    height: 12px;
+}
+.mission {
+    background-color: var(--green);
+}
+.vision {
+    background-color: var(--red);
+}
+.general_info {
+    color: #000;
+    background-color: var(--yellow);
+}
+.mission_text, .vision_text, .general_info_text {
+    padding: 10px;
+    transition: scaleY .5s;
+}
+
+
+
 /*! ASIDE */
 
 #aside {
     height: 100%;
-    /* width: 100vw; */
+    width: 100vw;
     background-color: #444;
     transition: transform .5s;
 }
@@ -133,8 +164,8 @@ body {
 /*! NAVIGATION */
 
 #nav {
-    /* position: fixed;
-    bottom: 0; */
+    position: absolute;
+    bottom: 0%;
     width: 100vw;
     background-color: var(--green);
     padding: .8rem;

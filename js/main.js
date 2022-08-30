@@ -3,7 +3,9 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            page: 'home'
+            page: 'games',
+            about: '',
+            game: '',
         }
     },
     created() {
@@ -20,9 +22,14 @@ createApp({
         toggleClass: function(element) {
             const allLinks = document.querySelectorAll('.icon')
             allLinks.forEach(e => e.classList.remove('page'))
-
             this.page = element
             document.querySelector(`#${element}`).classList.add('page')
+        },
+        showAbout: function(element) {
+            this.about = `${element}`
+        },
+        showGame: function(element) {
+            this.game = `${element}`
         }
     },
     computed: {
