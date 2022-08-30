@@ -213,50 +213,95 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                    <!--    <tr>
-                                <td rowspan="2">09/22</td>
-                                <td>U1 and U3</td>
-                                <td>South</td>
-                                <td>9:30 am</td>
-                            </tr>
-                            <tr>
-                                <td>U2 and U6</td>
-                                <td>AJ Katzemaier</td>
-                                <td>1:00 pm</td>
-                            </tr>
-                            <tr>
+
+                            <tr @click="showGame(`9-29_info`)">
                                 <td>09/29</td>
                                 <td>U4 and U5</td>
-                                <td>Greenbay</td>
-                                <td>9:30 am</td>
+                            </tr>
+                            <tr class="9-29_info text-end fw-bold" v-if="game === `9-29_info`">
+                                <td colspan="3">
+                                    <a @click="showGame(``)">x</a>
+                                </td>
+                            </tr>
+                            <tr class="9-29_info" v-if="game === `9-29_info`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U4-U5</span>
+                                        <span>Greenbay</span>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="fw-bold">
+                                <td>October</td>
+                                <td>Teams</td>
+                            </tr>
+
+                            <tr @click="showGame(`10-06_info`)">
+                                <td rowspan="2">10/06</td>
+                                <td>U2 and U5</td>
+                            </tr>
+                            <tr @click="showGame(`10-06_info`)">
+                                <td>U1 and U6</td>
+                            </tr>
+                            <tr class="10-06_info text-end fw-bold" v-if="game === `10-06_info`">
+                                <td colspan="3">
+                                    <a @click="showGame(``)">x</a>
+                                </td>
+                            </tr>
+                            <tr class="10-06_info" v-if="game === `10-06_info`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U2-U5</span>
+                                        <span>Marjorie P Hart</span>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="10-06_info" v-if="game === `10-06_info`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U1-U6</span>
+                                        <span>South</span>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr @click="showGame(`10-08_info`)">
+                                <td rowspan="2">10/08</td>
+                                <td>U3 and U4</td>
+                            </tr>
+                            <tr @click="showGame(`10-08_info`)">
+                                <td>U5 and U1</td>
+                            </tr>
+                            <tr class="10-08_info text-end fw-bold" v-if="game === `10-08_info`">
+                                <td colspan="3">
+                                    <a @click="showGame(``)">x</a>
+                                </td>
+                            </tr>
+                            <tr class="10-08_info" v-if="game === `10-08_info`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U3-U4</span>
+                                        <span>Howard A Yeager</span>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="10-08_info" v-if="game === `10-08_info`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U5-U1</span>
+                                        <span>Greenbay</span>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>OCTOBER</th>
-                                <th>Teams</th>
-                                <th>Location</th>
-                                <th>Times</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td rowspan="2">10/06</td>
-                                <td>U2 and U5</td>
-                                <td>Marjorie P Hart</td>
-                                <td>9:30 am</td>
-                            </tr>
-                            <tr>
-                                <td>U1 and U6</td>
-                                <td>South</td>
-                                <td>1:00 pm</td>
-                            </tr>
-                            <tr>
+                    <!--  <tr>
                                 <td rowspan="2">10/08</td>
                                 <td>U3 and U4</td>
                                 <td>Howard A Yeager</td>
