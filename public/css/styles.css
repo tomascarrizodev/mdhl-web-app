@@ -122,7 +122,35 @@ body {
 table {
     width:90%;
     text-align: center;
-    /* background-color: ; */
+    vertical-align: middle !important;
+}
+
+.game_day {
+    background-color: #70E6D8 !important;
+    font-weight: 600;
+}
+.game_day_odd {
+    background-color: #5ec2b6 !important;
+    font-weight: 600;
+}
+
+.game_team {
+    background-color: var(--yellow) !important;
+}
+.game_team_odd {
+    background-color: var(--l-yellow) !important;
+}
+
+.game_close {
+    background-color: rgb(204, 0, 0) !important;
+}
+
+.game_info {
+    background-color: var(--d-green);
+    color: white;
+}
+.game_info:nth-child(odd) {
+    background-color: var(--green);
 }
 
 /*! ASIDE */
