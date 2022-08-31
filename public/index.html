@@ -82,7 +82,7 @@
                 </div>
                 <div id="principal" v-if="page === `games`" class="d-flex flex-column justify-content-evenly align-items-center">
                     <h2>Game Information</h2>
-                    <table>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>September</th>
@@ -105,7 +105,7 @@
                             <tr class="9-1_info" v-if="game === `9-1_info`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
-                                        <span>U1 and U4</span>
+                                        <span>U1-U4</span>
                                         <span>AJ Katzemaier</span>
                                         <span>9:30 a.m.</span>
                                     </div>
@@ -114,7 +114,7 @@
                             <tr class="9-1_info" v-if="game === `9-1_info`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
-                                        <span>U3 and U2</span>
+                                        <span>U3-U2</span>
                                         <span>Greenbay</span>
                                         <span>1:00 p.m.</span>
                                     </div>
@@ -136,7 +136,7 @@
                             <tr class="9-8_info" v-if="game === `9-8_info`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
-                                        <span>U5 and U6</span>
+                                        <span>U5-U6</span>
                                         <span>Howard A Yeager</span>
                                         <span>9:30 a.m.</span>
                                     </div>
@@ -145,7 +145,7 @@
                             <tr class="9-8_info" v-if="game === `9-8_info`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
-                                        <span>U6 and U1</span>
+                                        <span>U6-U1</span>
                                         <span>Marjorie P Hart</span>
                                         <span>1:00 p.m.</span>
                                     </div>
@@ -167,7 +167,7 @@
                             <tr class="9-15_info" v-if="game === `9-15_info`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
-                                        <span>U2 and U4</span>
+                                        <span>U2-U4</span>
                                         <span>Marjorie P Hart</span>
                                         <span>9:30 a.m.</span>
                                     </div>
@@ -176,7 +176,7 @@
                             <tr class="9-15_info" v-if="game === `9-15_info`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
-                                        <span>U3 and U5</span>
+                                        <span>U3-U5</span>
                                         <span>North</span>
                                         <span>1:00 p.m.</span>
                                     </div>
@@ -371,7 +371,7 @@
                     <h2>Contact</h2>
                 </div>
             </div>
-            <aside id="aside" class="hide d-flex flex-column justify-content-evenly align-items-center">
+            <aside id="aside" class="offcanvas d-flex flex-column justify-content-evenly align-items-center">
                 <div class="d-flex flex-column justify-content-center align-items-center gap-3">
                     <h4 class="m-0">Dou yoy have an account?</h4>
                     <span><span class="log_txt">Log in</span> and get access to more features</span>

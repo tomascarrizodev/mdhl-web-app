@@ -24,7 +24,7 @@ body {
 }
 
 #app {
-    height: 100vh;
+    /* height: 100vh; */
     /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
@@ -117,7 +117,13 @@ body {
     transition: scaleY .5s;
 }
 
+/** Games */
 
+table {
+    width:90%;
+    text-align: center;
+    /* background-color: ; */
+}
 
 /*! ASIDE */
 
@@ -125,7 +131,7 @@ body {
     position: absolute;
     top: 15vh;
     height: 80vh;
-    width: 100vw;
+    width: 87.5vw;
     background-color: #444;
     transition: transform .5s;
 
