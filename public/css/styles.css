@@ -20,12 +20,9 @@
 
 body {
     background: var(--dark);
-    /* overflow-y: hidden; */
 }
 
 #app {
-    /* height: 100vh; */
-    /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
 }
@@ -53,7 +50,6 @@ body {
 /*! CONTENT */
 
 #main {
-    /* overflow: hidden; */
     color: #fff;
     background-color: #444;
     margin: 20px;
@@ -63,7 +59,8 @@ body {
 }
 
 #principal {
-    height: 100%;
+    padding: 30px 10px;
+    gap: 10px;
 }
 #principal .dates {
     width: 90%;
@@ -101,7 +98,12 @@ body {
 .arrow img {
     width: 12px;
     height: 12px;
+    transition: rotate 1s;
 }
+.rotate {
+    transform: rotate(180deg);
+}
+
 .mission {
     background-color: var(--green);
 }
@@ -155,6 +157,10 @@ table {
 
 /** Rules */
 
+#rules_top {
+    margin-top: 20px;
+}
+
 .back_top {
     padding: 10px 15px;
     background-color: #05A774;
@@ -179,12 +185,6 @@ table {
     background-color: #444;
     transition: transform .5s;
 
-}
-.hide {
-    transform: translateY(0%) translateX(100%);
-}
-.show {
-    transform: translateY(0%) translateX(0%);
 }
 
 #aside div h4 {
@@ -241,5 +241,4 @@ table {
 }
 .hide_nav {
     transform: translateY(100%);
-    /* display: none !important; */
 }
