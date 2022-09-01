@@ -3,7 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            page: 'rules',
+            page: 'contact',
             about: '',
             game: '',
         }
@@ -35,6 +35,6 @@ createApp({
         }
     },
     computed: {
-
+        
     }
 }).mount('#app')

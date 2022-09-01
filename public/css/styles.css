@@ -153,6 +153,22 @@ table {
     background-color: var(--green);
 }
 
+/** Rules */
+
+.back_top {
+    padding: 10px 15px;
+    background-color: #05A774;
+    position: fixed;
+    top: 85px;
+    right: 10%;
+    border: none;
+    border-radius: 5px;
+}
+.back_top a {
+    color: white;
+    text-decoration: none;
+}
+
 /*! ASIDE */
 
 #aside {
