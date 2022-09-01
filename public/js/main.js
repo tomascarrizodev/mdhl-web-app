@@ -3,7 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            page: 'games',
+            page: 'rules',
             about: '',
             game: '',
         }
