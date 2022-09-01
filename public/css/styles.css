@@ -27,6 +27,20 @@ body {
     justify-content: space-between;
 }
 
+/*! LOADER */
+
+#loading {
+    position: relative;
+    background-color: var(--green);
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    
+}
+#loading img {
+    width: 60vw;
+}
+
 /*! HEADER */
 
 #header {
@@ -36,7 +50,7 @@ body {
     background-color: var(--d-green);
     padding: 1rem;
     border-radius: 0 0 1rem 1rem;
-    z-index: 1000;
+    /* z-index: 1000; */
 }
 
 #logo {
@@ -180,11 +194,9 @@ table {
 #aside {
     position: absolute;
     top: 15vh;
-    height: 80vh;
+    height: 80%;
     width: 87.5vw;
     background-color: #444;
-    transition: transform .5s;
-
 }
 
 #aside div h4 {

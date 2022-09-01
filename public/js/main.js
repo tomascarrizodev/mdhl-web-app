@@ -12,7 +12,13 @@ createApp({
     created() {
         
     },
+    mounted: function() {
+        this.loader()
+    },
     methods: {
+        loader: function () {
+            document.querySelector('#loading').classList.add('d-none')
+        },
         show() {
             document.querySelector('#open').classList.toggle('d-none')
             document.querySelector('#close').classList.toggle('d-none')
