@@ -50,7 +50,6 @@ body {
     background-color: var(--d-green);
     padding: 1rem;
     border-radius: 0 0 1rem 1rem;
-    /* z-index: 1000; */
 }
 
 #logo {
@@ -97,6 +96,15 @@ body {
     color: #fff;
     background-color: var(--sapphire);
 }
+
+#principal .team_dates {
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--g-orange-gold));
+    width: 90%;
+}
+
 
 /** About */
 .about_box {

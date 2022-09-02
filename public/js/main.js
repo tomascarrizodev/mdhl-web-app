@@ -3,10 +3,15 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            page: 'home',
+            page: 'games',
             about: '',
             game: '',
-            log: false,
+            log: true,
+            name: '',
+            userName: '',
+            email: '',
+            password: '',
+            myTeam: 'U3'
         }
     },
     created() {
@@ -14,10 +19,26 @@ createApp({
     },
     mounted: function() {
         this.loader()
+        this.header()
+        if (this.page === 'games') {
+            this.gameTable()
+        }
     },
     methods: {
         loader: function () {
             document.querySelector('#loading').classList.add('d-none')
+        },
+        header: function() {
+            if (this.log) {document.querySelector('#header').classList.replace('justify-content-between', 'justify-content-evenly')}
+        },
+        gameTable: function() {
+            const allMatches = document.querySelectorAll('.game_match')
+            allMatches.forEach(e => {
+                // Filtrar aquellos que tengan myTeam y pintarlos
+                const teams = e.innerHTML
+                if (teams.includes(this.myTeam)) {
+                    console.log(this.myTeam);
+                }})
         },
         show() {
             document.querySelector('#open').classList.toggle('d-none')

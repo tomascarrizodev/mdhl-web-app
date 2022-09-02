@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div id="app" @load="loader()">
+    <div id="app">
 
         <div id="loading" class="d-flex flex-column justify-content-center align-items-center gap-3">
             <img src="./assets/img/logo_n_title.png" alt="">
@@ -25,17 +25,18 @@
         <header id="header" class="d-flex justify-content-between align-items-center">
             <img src="./assets/img/logo.png" alt="logo" id="logo">
             <img src="./assets/img/title_1.png" alt="title" id="title">
-            <svg id="open" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list"
+            <svg id="open" v-if="!log" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list"
                 viewBox="0 0 16 16" @click="show()">
                 <path fill-rule="evenodd"
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
-            <svg class="d-none" id="close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" @click="show()">
+            <svg class="d-none" v-if="!log" id="close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" @click="show()">
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
             </svg>
         </header>
 
         <main id="main">
+            <!--! NO LOG -->
             <div v-if="!log">
                 <div id="principal" v-if="page === `home`" class="d-flex flex-column justify-content-evenly align-items-center">
                     <h2>Upcoming Events</h2>
@@ -476,10 +477,283 @@
                     <button class="sign_btn">Sign Up</button>
                 </div>
             </aside>
+
+            <!--! LOGGED -->
+            <div v-if="log">
+                <div id="principal" v-if="page === `home`" class="d-flex flex-column justify-content-evenly align-items-center">
+                    <h2>Upcoming Events</h2>
+                    <div class="team_dates d-flex flex-column text-center">
+                        <span class="m-0 fw-bold">NEXT TEAM'S MATCH</span>
+                    </div>
+                    <div class="dates d-flex flex-column">
+                        <h3>August 4th</h3>
+                        <span>MDHL Fundraiser</span>
+                    </div>
+                    <div class="dates d-flex flex-column">
+                        <h3>August 16th</h3>
+                        <span>Season Kick-off: Meet the Teams</span>
+                    </div>
+                    <div class="dates d-flex flex-column">
+                        <h3>September 1st</h3>
+                        <span>First Game of the Season</span>
+                    </div>
+                    <button @click="toggleClass(`games`)" class="checkout-btn">Check out Game Schedule</button>
+                </div>
+
+                <div id="principal" v-if="page === `games`" class="d-flex flex-column justify-content-evenly align-items-center">
+                    <h2>Game Information</h2>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr class="table-dark">
+                                <th>September</th>
+                                <th>Teams</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr @click="showGame(`game_info 9-1`)">
+                                <td class="game_day" rowspan="2">09/01</td>
+                                <td class="game_team game_match">U1 and U4</td>
+                            </tr>
+                            <tr @click="showGame(`game_info 9-1`)">
+                                <td class="game_team_odd game_match">U3 and U2</td>
+                            </tr>
+                            <tr class="game_info 9-1" v-if="game === `game_info 9-1`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U1-U4</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.325868,-87.862801&z=15&t=m&hl=es-419&gl=AR&mapclient=embed&cid=14928234466113333269" class="text-warning">AJ Katzemaier</a>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="game_info 9-1" v-if="game === `game_info 9-1`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U3-U2</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.320964,-87.868864&z=15&t=m&hl=es-419&gl=AR&mapclient=embed&cid=8361630336874634465" class="text-warning">Greenbay</a>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr @click="showGame(`game_info 9-8`)">
+                                <td class="game_day_odd" rowspan="2">09/08</td>
+                                <td class="game_team game_match">U5 and U6</td>
+                            </tr>
+                            <tr @click="showGame(`game_info 9-8`)">
+                                <td class="game_team_odd game_match">U6 and U1</td>
+                            </tr>
+                            <tr class="game_info 9-8" v-if="game === `game_info 9-8`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U5-U6</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.315438,-87.853881&z=15&t=m&hl=es-419&gl=AR&mapclient=embed&cid=10039080323586619162" class="text-warning">Howard A Yeager</a>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="game_info 9-8" v-if="game === `game_info 9-8`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U6-U1</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=41.929623,-87.645973&z=14&t=m&hl=es-419&gl=AR&mapclient=embed&cid=15852491871625214517" class="text-warning">Marjorie P Hart</a>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr @click="showGame(`game_info 9-15`)">
+                                <td class="game_day" rowspan="2">09/15</td>
+                                <td class="game_team game_match">U2 and U4</td>
+                            </tr>
+                            <tr @click="showGame(`game_info 9-15`)">
+                                <td class="game_team_odd game_match">U3 and U5</td>
+                            </tr>
+                            <tr class="game_info 9-15" v-if="game === `game_info 9-15`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U2-U4</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=41.929623,-87.645973&z=14&t=m&hl=es-419&gl=AR&mapclient=embed&cid=15852491871625214517" class="text-warning">Marjorie P Hart</a>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="game_info 9-15" v-if="game === `game_info 9-15`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U3-U5</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.368957,-87.834445&z=13&t=m&hl=es-419&gl=AR&mapclient=embed&cid=18333582590635245270" class="text-warning">North</a>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr @click="showGame(`game_info 9-22`)">
+                                <td class="game_day_odd" rowspan="2">09/22</td>
+                                <td class="game_team game_match">U1 and U3</td>
+                            </tr>
+                            <tr @click="showGame(`game_info 9-22`)">
+                                <td class="game_team_odd game_match">U2 and U6</td>
+                            </tr>
+                            <tr class="game_info 9-22" v-if="game === `game_info 9-22`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U1-U3</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=41.929623,-87.645973&z=14&t=m&hl=es-419&gl=AR&mapclient=embed&cid=15852491871625214517" class="text-warning">Marjorie P Hart</a>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="game_info 9-22" v-if="game === `game_info 9-22`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U2-U6</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.368957,-87.834445&z=13&t=m&hl=es-419&gl=AR&mapclient=embed&cid=18333582590635245270" class="text-warning">North</a>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr @click="showGame(`game_info 9-29`)">
+                                <td class="game_day">09/29</td>
+                                <td class="game_team game_match">U4 and U5</td>
+                            </tr>
+                            <tr class="game_info 9-29" v-if="game === `game_info 9-29`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U4-U5</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.320964,-87.868864&z=15&t=m&hl=es-419&gl=AR&mapclient=embed&cid=8361630336874634465" class="text-warning">Greenbay</a>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="table-dark fw-bold">
+                                <td>October</td>
+                                <td>Teams</td>
+                            </tr>
+
+                            <tr @click="showGame(`game_info 10-06`)">
+                                <td class="game_day" rowspan="2">10/06</td>
+                                <td class="game_team game_match">U2 and U5</td>
+                            </tr>
+                            <tr @click="showGame(`game_info 10-06`)">
+                                <td class="game_team_odd game_match">U1 and U6</td>
+                            </tr>
+                            <tr class="game_info 10-06" v-if="game === `game_info 10-06`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U2-U5</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=41.929623,-87.645973&z=14&t=m&hl=es-419&gl=AR&mapclient=embed&cid=15852491871625214517" class="text-warning">Marjorie P Hart</a>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="game_info 10-06" v-if="game === `game_info 10-06`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U1-U6</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.317067,-87.854593&z=15&t=m&hl=es-419&gl=AR&mapclient=embed&cid=10153522112144064193" class="text-warning">South</a>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr @click="showGame(`game_info 10-08`)">
+                                <td class="game_day_odd" rowspan="2">10/08</td>
+                                <td class="game_team game_match">U3 and U4</td>
+                            </tr>
+                            <tr @click="showGame(`game_info 10-08`)">
+                                <td class="game_team_odd game_match">U5 and U1</td>
+                            </tr>
+                            <tr class="game_info 10-08" v-if="game === `game_info 10-08`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U3-U4</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.315438,-87.853881&z=15&t=m&hl=es-419&gl=AR&mapclient=embed&cid=10039080323586619162" class="text-warning">Howard A Yeager</a>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="game_info 10-08" v-if="game === `game_info 10-08`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U5-U1</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.320964,-87.868864&z=15&t=m&hl=es-419&gl=AR&mapclient=embed&cid=8361630336874634465" class="text-warning">Greenbay</a>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr @click="showGame(`game_info 10-20`)">
+                                <td class="game_day" rowspan="2">10/20</td>
+                                <td class="game_team game_match">U6 and U3</td>
+                            </tr>
+                            <tr @click="showGame(`game_info 10-20`)">
+                                <td class="game_team_odd game_match">U2 and U4</td>
+                            </tr>
+                            <tr class="game_info 10-20" v-if="game === `game_info 10-20`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U6-U3</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.368957,-87.834445&z=13&t=m&hl=es-419&gl=AR&mapclient=embed&cid=18333582590635245270" class="text-warning">North</a>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="game_info 10-20" v-if="game === `game_info 10-20`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U2-U4</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=41.929623,-87.645973&z=14&t=m&hl=es-419&gl=AR&mapclient=embed&cid=15852491871625214517" class="text-warning">Marjorie P Hart</a>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr @click="showGame(`game_info 10-27`)">
+                                <td class="game_day_odd" rowspan="2">10/27</td>
+                                <td class="game_team game_match">U3 and U1</td>
+                            </tr>
+                            <tr @click="showGame(`game_info 10-27`)">
+                                <td class="game_team_odd game_match">U5 and U6</td>
+                            </tr>
+                            <tr class="game_info 10-27" v-if="game === `game_info 10-27`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U3-U1</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.325868,-87.862801&z=15&t=m&hl=es-419&gl=AR&mapclient=embed&cid=14928234466113333269" class="text-warning">AJ Katzemaier</a>
+                                        <span>9:30 a.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="game_info 10-27" v-if="game === `game_info 10-27`">
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>U5-U6</span>
+                                        <a target="_blank" href="https://www.google.com/maps?ll=42.315438,-87.853881&z=15&t=m&hl=es-419&gl=AR&mapclient=embed&cid=10039080323586619162" class="text-warning">Howard A Yeager</a>
+                                        <span>1:00 p.m.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--! SIGN -->
+
+
+            <!--! LOG -->
+
+
+            <!--! RECOVER -->
+
+
         </main>
         
         <!--! FIRST -->
-        <nav id="nav" class="d-flex justify-content-around align-items-center">
+        <nav id="nav" v-if="!log" class="d-flex justify-content-around align-items-center">
             <a href="#" @click="toggleClass(`home`)" id="home" class="icon page d-flex flex-column justify-content-around align-items-center text-decoration-none">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
                     <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
@@ -508,6 +782,32 @@
                     <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                 </svg>
                 <span>Contact</span>
+            </a>
+        </nav>
+
+        <nav id="nav" v-if="log" class="d-flex justify-content-around align-items-center">
+            <a href="#" @click="toggleClass(`home`)" id="home" class="icon page d-flex flex-column justify-content-around align-items-center text-decoration-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+                </svg>
+                <span>Home</span>
+            </a>
+            <a href="#" @click="toggleClass(`games`)" id="games" class="icon d-flex flex-column justify-content-around align-items-center text-decoration-none">
+                <img v-if="page === `games`" src="./assets/img/hockey_icon_on.png" width="24" height="24" alt="hockey">
+                <img v-else src="./assets/img/hockey_icon.png" width="24" height="24" alt="hockey">
+                <span>Games</span>
+            </a>
+            <a href="#" @click="toggleClass(`rules`)" id="rules" class="icon d-flex flex-column justify-content-around align-items-center text-decoration-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+                </svg>
+                <span>Registration</span>
+            </a>
+            <a href="#" @click="toggleClass(`contact`)" id="contact" class="icon d-flex flex-column justify-content-around align-items-center text-decoration-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                </svg>
+                <span>User</span>
             </a>
         </nav>
     </div>
