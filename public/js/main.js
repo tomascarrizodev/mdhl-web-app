@@ -11,7 +11,9 @@ createApp({
             userName: '',
             email: '',
             password: '',
-            myTeam: 'U3'
+            myTeam: 'U4',
+            teamFilter: 'all',
+            stadiumFilter: 'all'
         }
     },
     created() {
@@ -23,6 +25,7 @@ createApp({
         if (this.page === 'games') {
             this.gameTable()
         }
+        
     },
     methods: {
         loader: function () {
@@ -34,10 +37,12 @@ createApp({
         gameTable: function() {
             const allMatches = document.querySelectorAll('.game_match')
             allMatches.forEach(e => {
-                // Filtrar aquellos que tengan myTeam y pintarlos
+                // const teamsOne = e.filter(d => d.innerHTML.includes(this.myTeam))
+                // console.log(teamsOne);
                 const teams = e.innerHTML
                 if (teams.includes(this.myTeam)) {
-                    console.log(this.myTeam);
+                    // console.log(e);
+                    e.setAttribute('style', 'background: linear-gradient(90deg, #00A3FF, #0047FF, #00A3FF, #0047FF) !important; color: #fff !important;')
                 }})
         },
         show() {
@@ -84,6 +89,27 @@ createApp({
         backTop: function() {
             // document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        },
+        filterGames: function() {
+            console.log(this.teamFilter);
+            console.log(this.stadiumFilter);
+            if (this.teamFilter !== 'all') {
+                const allTeams = document.querySelectorAll('.game_match')
+                allTeams.forEach(e => {
+                    const selectedTeam = [e.innerHTML]
+                    selectedTeam.forEach(inner => {
+                        if(!inner.includes(this.teamFilter)) {
+                            console.log(inner);
+                            e.classList.add('d-none')
+                        } else {
+                            e.classList.remove('d-none')
+                        }
+                    })
+                    // if (!selectedTeam.includes(this.teamFilter)) {
+                    //     e.classList.toggle('d-none')
+                    // }
+                })
+            }
         }
     },
     computed: {

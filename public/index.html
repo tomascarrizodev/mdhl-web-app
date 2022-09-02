@@ -502,6 +502,27 @@
 
                 <div id="principal" v-if="page === `games`" class="d-flex flex-column justify-content-evenly align-items-center">
                     <h2>Game Information</h2>
+                    {{teamFilter}}{{stadiumFilter}}
+                    <div class="w-100 d-flex justify-content-evenly" @change="filterGames(`teamFilter`, `stadiumFilter`)">
+                        <select name="team" id="" v-model="teamFilter">
+                            <option value="all">All Teams</option>
+                            <option value="1">U1</option>
+                            <option value="2">U2</option>
+                            <option value="3">U3</option>
+                            <option value="4">U4</option>
+                            <option value="5">U5</option>
+                            <option value="6">U6</option>
+                        </select>
+                        <select name="stadium" id="" v-model="stadiumFilter">
+                            <option value="all">Stadiums</option>
+                            <option value="A">AJ Katzemaier</option>
+                            <option value="G">Greenbay</option>
+                            <option value="H">Howard A Yeager</option>
+                            <option value="M">Marjorie P Hart</option>
+                            <option value="N">North</option>
+                            <option value="S">South</option>
+                        </select>
+                    </div>
                     <table class="table table-borderless">
                         <thead>
                             <tr class="table-dark">
@@ -738,6 +759,10 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="w-100 d-flex justify-content-evenly">
+                        <button>Send email</button>
+                        <button>Download PDF</button>
+                    </div>
                 </div>
             </div>
 
