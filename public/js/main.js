@@ -93,8 +93,8 @@ createApp({
         filterGames: function() {
             console.log(this.teamFilter);
             console.log(this.stadiumFilter);
+            const allTeams = document.querySelectorAll('.game_match')
             if (this.teamFilter !== 'all') {
-                const allTeams = document.querySelectorAll('.game_match')
                 allTeams.forEach(e => {
                     const selectedTeam = [e.innerHTML]
                     selectedTeam.forEach(inner => {
@@ -108,6 +108,10 @@ createApp({
                     // if (!selectedTeam.includes(this.teamFilter)) {
                     //     e.classList.toggle('d-none')
                     // }
+                })
+            } else {
+                allTeams.forEach(e => {
+                    e.classList.remove('d-none')
                 })
             }
         }
