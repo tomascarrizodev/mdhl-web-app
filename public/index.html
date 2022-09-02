@@ -502,7 +502,6 @@
 
                 <div id="principal" v-if="page === `games`" class="d-flex flex-column justify-content-evenly align-items-center">
                     <h2>Game Information</h2>
-                    {{teamFilter}}{{stadiumFilter}}
                     <div class="w-100 d-flex justify-content-evenly" @change="filterGames(`teamFilter`, `stadiumFilter`)">
                         <select name="team" id="" v-model="teamFilter">
                             <option value="all">All Teams</option>
@@ -513,15 +512,6 @@
                             <option value="5">U5</option>
                             <option value="6">U6</option>
                         </select>
-                        <!-- <select name="stadium" id="" v-model="stadiumFilter">
-                            <option value="all">Stadiums</option>
-                            <option value="A">AJ Katzemaier</option>
-                            <option value="G">Greenbay</option>
-                            <option value="H">Howard A Yeager</option>
-                            <option value="M">Marjorie P Hart</option>
-                            <option value="N">North</option>
-                            <option value="S">South</option>
-                        </select> -->
                     </div>
                     <table class="table table-borderless">
                         <thead>
@@ -531,14 +521,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr @click="showGame(`game_info 9-1`)">
-                                <td class="game_day" rowspan="2">09/01</td>
-                                <td class="game_team game_match">U1 and U4</td>
+                            <tr>
+                                <td class="game_day 1 4 3 2" v-if="teamFilter === `all`" rowspan="2" @click="showGame(`game_info 9-1`)">09/01</td>
+                                <td class="game_day 1 4 3 2" v-if="teamFilter == 1 || teamFilter == 4" @click="showGame(`u1-u4`)" rowspan="2">09/01</td>
+                                <td class="game_day 1 4 3 2" v-if="teamFilter == 3 || teamFilter == 2" @click="showGame(`u3-u2`)" rowspan="2">09/01</td>
+                                <td class="game_team game_match" @click="showGame(`u1-u4`)">U1 and U4</td>
                             </tr>
-                            <tr @click="showGame(`game_info 9-1`)">
-                                <td class="game_team_odd game_match">U3 and U2</td>
+                            <tr>
+                                <td class="game_team_odd game_match" @click="showGame(`u3-u2`)">U3 and U2</td>
                             </tr>
-                            <tr class="game_info 9-1" v-if="game === `game_info 9-1`">
+                            <tr class="game_info 9-1 u1-u4" v-if="game === `game_info 9-1` || game === `u1-u4`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U1-U4</span>
@@ -547,7 +539,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="game_info 9-1" v-if="game === `game_info 9-1`">
+                            <tr class="game_info 9-1 u3-u2" v-if="game === `game_info 9-1` || game === `u3-u2`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U3-U2</span>
@@ -557,14 +549,16 @@
                                 </td>
                             </tr>
 
-                            <tr @click="showGame(`game_info 9-8`)">
-                                <td class="game_day_odd" rowspan="2">09/08</td>
-                                <td class="game_team game_match">U5 and U6</td>
+                            <tr>
+                                <td class="game_day_odd 5 6 1 4" v-if="teamFilter === `all`" @click="showGame(`game_info 9-8`)" rowspan="2">09/08</td>
+                                <td class="game_day_odd 5 6 1 4" v-if="teamFilter == 5 || teamFilter == 6" @click="showGame(`u5-u6`)" rowspan="2">09/08</td>
+                                <td class="game_day_odd 5 6 1 4" v-if="teamFilter == 4 || teamFilter == 1" @click="showGame(`u4-u1`)" rowspan="2">09/08</td>
+                                <td class="game_team game_match" @click="showGame(`u5-u6`)">U5 and U6</td>
                             </tr>
-                            <tr @click="showGame(`game_info 9-8`)">
-                                <td class="game_team_odd game_match">U6 and U1</td>
+                            <tr>
+                                <td class="game_team_odd game_match" @click="showGame(`u6-u1`)">U4 and U1</td>
                             </tr>
-                            <tr class="game_info 9-8" v-if="game === `game_info 9-8`">
+                            <tr class="game_info 9-8" v-if="game === `game_info 9-8` || game === `u5-u6`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U5-U6</span>
@@ -573,24 +567,26 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="game_info 9-8" v-if="game === `game_info 9-8`">
+                            <tr class="game_info 9-8" v-if="game === `game_info 9-8` || game === `u4-u1`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
-                                        <span>U6-U1</span>
+                                        <span>U4-U1</span>
                                         <a target="_blank" href="https://www.google.com/maps?ll=41.929623,-87.645973&z=14&t=m&hl=es-419&gl=AR&mapclient=embed&cid=15852491871625214517" class="text-warning">Marjorie P Hart</a>
                                         <span>1:00 p.m.</span>
                                     </div>
                                 </td>
                             </tr>
 
-                            <tr @click="showGame(`game_info 9-15`)">
-                                <td class="game_day" rowspan="2">09/15</td>
-                                <td class="game_team game_match">U2 and U4</td>
+                            <tr>
+                                <td class="game_day 2 4 3 5" v-if="teamFilter === `all`" @click="showGame(`game_info 9-15`)" rowspan="2">09/15</td>
+                                <td class="game_day 2 4 3 5" v-if="teamFilter == 2 || teamFilter == 4" @click="showGame(`u2-u4`)" rowspan="2">09/15</td>
+                                <td class="game_day 2 4 3 5" v-if="teamFilter == 3 || teamFilter == 5" @click="showGame(`u3-u5`)" rowspan="2">09/15</td>
+                                <td class="game_team game_match" @click="showGame(`u2-u4`)">U2 and U4</td>
                             </tr>
-                            <tr @click="showGame(`game_info 9-15`)">
-                                <td class="game_team_odd game_match">U3 and U5</td>
+                            <tr>
+                                <td class="game_team_odd game_match"  @click="showGame(`u3-u5`)">U3 and U5</td>
                             </tr>
-                            <tr class="game_info 9-15" v-if="game === `game_info 9-15`">
+                            <tr class="game_info 9-15" v-if="game === `game_info 9-15` || game === `u2-u4`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U2-U4</span>
@@ -599,7 +595,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="game_info 9-15" v-if="game === `game_info 9-15`">
+                            <tr class="game_info 9-15" v-if="game === `game_info 9-15` || game === `u3-u5`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U3-U5</span>
@@ -609,14 +605,16 @@
                                 </td>
                             </tr>
 
-                            <tr @click="showGame(`game_info 9-22`)">
-                                <td class="game_day_odd" rowspan="2">09/22</td>
-                                <td class="game_team game_match">U1 and U3</td>
+                            <tr>
+                                <td class="game_day_odd 1 3 2 6" v-if="teamFilter === `all`" @click="showGame(`game_info 9-22`)" rowspan="2">09/22</td>
+                                <td class="game_day_odd 1 3 2 6" v-if="teamFilter == 1 || teamFilter == 3" @click="showGame(`u1-u3`)" rowspan="2">09/22</td>
+                                <td class="game_day_odd 1 3 2 6" v-if="teamFilter == 2 || teamFilter == 6" @click="showGame(`u2-u6`)" rowspan="2">09/22</td>
+                                <td class="game_team game_match"  @click="showGame(`u1-u3`)">U1 and U3</td>
                             </tr>
-                            <tr @click="showGame(`game_info 9-22`)">
-                                <td class="game_team_odd game_match">U2 and U6</td>
+                            <tr>
+                                <td class="game_team_odd game_match" @click="showGame(`u2-u6`)">U2 and U6</td>
                             </tr>
-                            <tr class="game_info 9-22" v-if="game === `game_info 9-22`">
+                            <tr class="game_info 9-22" v-if="game === `game_info 9-22` || game === `u1-u3`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U1-U3</span>
@@ -625,7 +623,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="game_info 9-22" v-if="game === `game_info 9-22`">
+                            <tr class="game_info 9-22" v-if="game === `game_info 9-22` || game === `u2-u6`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U2-U6</span>
@@ -636,7 +634,7 @@
                             </tr>
 
                             <tr @click="showGame(`game_info 9-29`)">
-                                <td class="game_day">09/29</td>
+                                <td class="game_day 4 5">09/29</td>
                                 <td class="game_team game_match">U4 and U5</td>
                             </tr>
                             <tr class="game_info 9-29" v-if="game === `game_info 9-29`">
@@ -654,14 +652,16 @@
                                 <td>Teams</td>
                             </tr>
 
-                            <tr @click="showGame(`game_info 10-06`)">
-                                <td class="game_day" rowspan="2">10/06</td>
-                                <td class="game_team game_match">U2 and U5</td>
+                            <tr>
+                                <td class="game_day 2 5 1 6" v-if="teamFilter === `all`" @click="showGame(`game_info 10-06`)" rowspan="2">10/06</td>
+                                <td class="game_day 2 5 1 6" v-if="teamFilter == 2 || teamFilter == 5" @click="showGame(`u2-u5`)" rowspan="2">10/06</td>
+                                <td class="game_day 2 5 1 6" v-if="teamFilter == 1 || teamFilter == 6" @click="showGame(`u1-u6`)" rowspan="2">10/06</td>
+                                <td class="game_team game_match" @click="showGame(`u2-u5`)">U2 and U5</td>
                             </tr>
-                            <tr @click="showGame(`game_info 10-06`)">
-                                <td class="game_team_odd game_match">U1 and U6</td>
+                            <tr>
+                                <td class="game_team_odd game_match" @click="showGame(`u1-u6`)">U1 and U6</td>
                             </tr>
-                            <tr class="game_info 10-06" v-if="game === `game_info 10-06`">
+                            <tr class="game_info 10-06" v-if="game === `game_info 10-06` || game === `u2-u5`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U2-U5</span>
@@ -670,7 +670,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="game_info 10-06" v-if="game === `game_info 10-06`">
+                            <tr class="game_info 10-06" v-if="game === `game_info 10-06` || game === `u1-u6`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U1-U6</span>
@@ -680,14 +680,16 @@
                                 </td>
                             </tr>
 
-                            <tr @click="showGame(`game_info 10-08`)">
-                                <td class="game_day_odd" rowspan="2">10/08</td>
-                                <td class="game_team game_match">U3 and U4</td>
+                            <tr>
+                                <td class="game_day_odd 3 4 5 1" v-if="teamFilter === `all`" @click="showGame(`game_info 10-08`)" rowspan="2">10/08</td>
+                                <td class="game_day_odd 3 4 5 1" v-if="teamFilter == 3 || teamFilter == 4" @click="showGame(`u3-u4`)" rowspan="2">10/08</td>
+                                <td class="game_day_odd 3 4 5 1" v-if="teamFilter == 5 || teamFilter == 1" @click="showGame(`u5-u1`)" rowspan="2">10/08</td>
+                                <td class="game_team game_match"  @click="showGame(`u3-u4`)">U3 and U4</td>
                             </tr>
-                            <tr @click="showGame(`game_info 10-08`)">
-                                <td class="game_team_odd game_match">U5 and U1</td>
+                            <tr>
+                                <td class="game_team_odd game_match" @click="showGame(`u5-u1`)">U5 and U1</td>
                             </tr>
-                            <tr class="game_info 10-08" v-if="game === `game_info 10-08`">
+                            <tr class="game_info 10-08" v-if="game === `game_info 10-08` || game === `u3-u4`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U3-U4</span>
@@ -696,7 +698,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="game_info 10-08" v-if="game === `game_info 10-08`">
+                            <tr class="game_info 10-08" v-if="game === `game_info 10-08` || game === `u5-u1`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U5-U1</span>
@@ -706,14 +708,16 @@
                                 </td>
                             </tr>
 
-                            <tr @click="showGame(`game_info 10-20`)">
-                                <td class="game_day" rowspan="2">10/20</td>
-                                <td class="game_team game_match">U6 and U3</td>
+                            <tr>
+                                <td class="game_day 6 3 2 4" v-if="teamFilter === `all`" rowspan="2" @click="showGame(`game_info 10-20`)">10/20</td>
+                                <td class="game_day 6 3 2 4" v-if="teamFilter == 6 || teamFilter == 3" @click="showGame(`u6-u3`)" rowspan="2">10/20</td>
+                                <td class="game_day 6 3 2 4" v-if="teamFilter == 2 || teamFilter == 4" @click="showGame(`u2-u42`)" rowspan="2">10/20</td>
+                                <td class="game_team game_match" @click="showGame(`u6-u3`)">U6 and U3</td>
                             </tr>
-                            <tr @click="showGame(`game_info 10-20`)">
-                                <td class="game_team_odd game_match">U2 and U4</td>
+                            <tr>
+                                <td class="game_team_odd game_match" @click="showGame(`u2-u42`)">U2 and U4</td>
                             </tr>
-                            <tr class="game_info 10-20" v-if="game === `game_info 10-20`">
+                            <tr class="game_info 10-20" v-if="game === `game_info 10-20` || game === `u6-u3`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U6-U3</span>
@@ -722,7 +726,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="game_info 10-20" v-if="game === `game_info 10-20`">
+                            <tr class="game_info 10-20" v-if="game === `game_info 10-20` || game === `u2-u42`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U2-U4</span>
@@ -732,14 +736,17 @@
                                 </td>
                             </tr>
 
-                            <tr @click="showGame(`game_info 10-27`)">
-                                <td class="game_day_odd" rowspan="2">10/27</td>
-                                <td class="game_team game_match">U3 and U1</td>
+                            <tr>
+                            <tr>
+                                <td class="game_day_odd 3 1 5 6" v-if="teamFilter === `all`" @click="showGame(`game_info 10-27`)" rowspan="2">10/27</td>
+                                <td class="game_day_odd 3 1 5 6" v-if="teamFilter == 3 || teamFilter == 1" @click="showGame(`u3-u1`)" rowspan="2">10/27</td>
+                                <td class="game_day_odd 3 1 5 6" v-if="teamFilter == 5 || teamFilter == 6" @click="showGame(`u5-u6`)" rowspan="2">10/27</td>
+                                <td class="game_team game_match" @click="showGame(`u3-u1`)">U3 and U1</td>
                             </tr>
-                            <tr @click="showGame(`game_info 10-27`)">
-                                <td class="game_team_odd game_match">U5 and U6</td>
+                            <tr>
+                                <td class="game_team_odd game_match" @click="showGame(`u5-u62`)">U5 and U6</td>
                             </tr>
-                            <tr class="game_info 10-27" v-if="game === `game_info 10-27`">
+                            <tr class="game_info 10-27" v-if="game === `game_info 10-27` || game === `u3-u1`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U3-U1</span>
@@ -748,7 +755,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="game_info 10-27" v-if="game === `game_info 10-27`">
+                            <tr class="game_info 10-27" v-if="game === `game_info 10-27` || game === `u5-u62`">
                                 <td colspan="2">
                                     <div class="d-flex justify-content-between">
                                         <span>U5-U6</span>
@@ -759,9 +766,19 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="w-100 d-flex justify-content-evenly">
-                        <button>Send email</button>
-                        <button>Download PDF</button>
+                    <div class="w-100 d-flex justify-content-around">
+                        <button class="send_email fw-bold d-flex justify-content-between align-items-center">
+                            <span>Send email</span>
+                            <picture class="send_container d-flex justify-content-center align-items-center">
+                                <img src="./assets/img/arrow_send.png" alt="Send" width="12" height="12">
+                            </picture>
+                        </button>
+                        <button class="download_pdf fw-bold d-flex justify-content-between align-items-center">
+                            <span>Download PDF</span>
+                            <picture class="download_container d-flex justify-content-center align-items-center">
+                                <img src="./assets/img/arrow_download.png" alt="Download" width="12" height="12">
+                            </picture>
+                        </button>
                     </div>
                 </div>
             </div>

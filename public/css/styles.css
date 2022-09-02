@@ -177,6 +177,36 @@ table {
     background-color: var(--green);
 }
 
+.send_email, .download_pdf {
+    border: none;
+    width: 46%;
+    /* height: 15%; */
+    padding: 1px;
+    padding-left: 6px;
+    font-size: 10pt;
+    border-radius: 5px;
+}
+.send_email {
+    background: linear-gradient(90deg, var(--g-sapphire));
+    color: #fff;
+}
+.download_pdf {
+    background: linear-gradient(90deg, var(--g-orange-gold));
+}
+.send_container {
+    background-color: #0047FF;
+    height: 100%;
+    width: 1.7rem;
+}
+.send_container img {
+    filter: invert(1);
+}
+.download_container {
+    background-color: #FFC700;
+    height: 100%;
+    width: 1.7rem;
+}
+
 /** Rules */
 
 #rules_top {

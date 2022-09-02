@@ -13,7 +13,6 @@ createApp({
             password: '',
             myTeam: 'U4',
             teamFilter: 'all',
-            stadiumFilter: 'all'
         }
     },
     created() {
@@ -91,26 +90,48 @@ createApp({
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         },
         filterGames: function() {
-            console.log(this.teamFilter);
-            console.log(this.stadiumFilter);
             const allTeams = document.querySelectorAll('.game_match')
+            const matchDay = document.querySelectorAll('.game_day')
+            const matchDay2 = document.querySelectorAll('.game_day_odd')
             if (this.teamFilter !== 'all') {
                 allTeams.forEach(e => {
                     const selectedTeam = [e.innerHTML]
                     selectedTeam.forEach(inner => {
                         if(!inner.includes(this.teamFilter)) {
-                            console.log(inner);
                             e.classList.add('d-none')
                         } else {
                             e.classList.remove('d-none')
                         }
                     })
-                    // if (!selectedTeam.includes(this.teamFilter)) {
-                    //     e.classList.toggle('d-none')
-                    // }
+                })
+                matchDay.forEach(e => {
+                    const selectedTeam = [e.className]
+                    selectedTeam.forEach(inner => {
+                        if(!inner.includes(this.teamFilter)) {
+                            e.classList.add('d-none')
+                        } else {
+                            e.classList.remove('d-none')
+                        }
+                    })
+                })
+                matchDay2.forEach(e => {
+                    const selectedTeam = [e.className]
+                    selectedTeam.forEach(inner => {
+                        if(!inner.includes(this.teamFilter)) {
+                            e.classList.add('d-none')
+                        } else {
+                            e.classList.remove('d-none')
+                        }
+                    })
                 })
             } else {
                 allTeams.forEach(e => {
+                    e.classList.remove('d-none')
+                })
+                matchDay.forEach(e => {
+                    e.classList.remove('d-none')
+                })
+                matchDay2.forEach(e => {
                     e.classList.remove('d-none')
                 })
             }
