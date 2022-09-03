@@ -812,45 +812,57 @@
                                     <span>Male</span>
                                 </label> -->
                                 <button v-if="gender === '' || gender === 'non_binary' || gender === 'male'" @click="genderSelect(`female`)" id="label_femenine">Female</button>
-                                <button v-if="gender === 'female'" id="label_femenine" class="female_selected text-dark fw-bold">Female</button>
+                                <span v-if="gender === 'female'" id="label_femenine" class="female_selected text-dark fw-bold">Female</span>
                                 <button v-if="gender === '' || gender === 'male' || gender === 'female'" @click="genderSelect(`non_binary`)" id="label_non_binary">Non-Binary</button>
-                                <button v-if="gender === 'non_binary'" id="label_non_binary" class="non_binary_selected text-dark fw-bold">Non-Binary</button>
+                                <span v-if="gender === 'non_binary'" id="label_non_binary" class="non_binary_selected text-dark fw-bold">Non-Binary</span>
                                 <button v-if="gender === '' || gender === 'female' || gender === 'non_binary'" @click="genderSelect(`male`)" id="label_male">Male</button>
-                                <button v-if="gender === 'male'" id="label_male" class="male_selected text-dark fw-bold">Male</button>
+                                <span v-if="gender === 'male'" id="label_male" class="male_selected text-dark fw-bold">Male</span>
                             </div>
                         </fieldset>
                         <fieldset>
                             <legend>Grade</legend>
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex flex-column align-items-center">
-                                    <label for="pre_school">
+                                    <!-- <label for="pre_school">
                                         <span>Pre-school</span>
                                         <input type="radio" name="grade" id="pre_school">
                                     </label>
                                     <label for="third_grade">
                                         <span>3rd</span>
                                         <input type="radio" name="grade" id="third_grade">
-                                    </label>
+                                    </label> -->
+                                    <button v-if="grade !== 'preschool'" class="non_selected" @click="gradeSelect(`preschool`)">Pre-school</button>
+                                    <span v-if="grade === 'preschool'" class="non_selected selected">Pre-school</span>
+                                    <button v-if="grade !== '3rd'" class="non_selected" @click="gradeSelect(`3rd`)">3rd</button>
+                                    <span v-if="grade === '3rd'" class="non_selected selected">3rd</span>
                                 </div>
                                 <div class="d-flex flex-column align-items-center">
-                                    <label for="first_grade">
+                                    <button v-if="grade !== '1st'" class="non_selected" @click="gradeSelect(`1st`)">1st</button>
+                                    <span v-if="grade === '1st'" class="non_selected selected">1st</span>
+                                    <button v-if="grade !== '4th'" class="non_selected" @click="gradeSelect(`4th`)">4th</button>
+                                    <span v-if="grade === '4th'" class="non_selected selected">4th</span>
+                                    <!-- <label for="first_grade">
                                         <span>1st</span>
                                         <input type="radio" name="grade" id="first_grade">
                                     </label>
                                     <label for="fourth_grade">
                                         <span>4th</span>
                                         <input type="radio" name="grade" id="fourth_grade">
-                                    </label>
+                                    </label> -->
                                 </div>
                                 <div class="d-flex flex-column align-items-center">
-                                    <label for="second_grade">
+                                    <button v-if="grade !== '2nd'" class="non_selected" @click="gradeSelect(`2nd`)">2nd</button>
+                                    <span v-if="grade === '2nd'" class="non_selected selected">2nd</span>
+                                    <button v-if="grade !== '5th'" class="non_selected" @click="gradeSelect(`5th`)">5th</button>
+                                    <span v-if="grade === '5th'" class="non_selected selected">5th</span>
+                                    <!-- <label for="second_grade">
                                         <span>2nd</span>
                                         <input type="radio" name="grade" id="second_grade">
                                     </label>
                                     <label for="fifth_grade">
                                         <span>5th</span>
                                         <input type="radio" name="grade" id="fifth_grade">
-                                    </label>
+                                    </label> -->
                                 </div>
                             </div>
                         </fieldset>

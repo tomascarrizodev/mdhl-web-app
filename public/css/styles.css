@@ -274,6 +274,18 @@ input[type="radio"], input[type="checkbox"] {
     background-color: limegreen !important;
 }
 
+.non_selected {
+    padding: .7rem;
+    border-radius: 6px;
+    background-color: #777;
+    border: none;
+    color:#fff;
+}
+.selected {
+    background-color: var(--green);
+    font-weight: bold;
+}
+
 /*! ASIDE */
 
 #aside {

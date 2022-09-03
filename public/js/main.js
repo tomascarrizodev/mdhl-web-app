@@ -13,7 +13,8 @@ createApp({
             password: '',
             myTeam: 'U4',
             teamFilter: 'all',
-            gender: ''
+            gender: '',
+            grade: '',
         }
     },
     created() {
@@ -152,6 +153,9 @@ createApp({
         },
         genderSelect: function(g) {
             this.gender = g
+        },
+        gradeSelect: function(g) {
+            this.grade = g
         }
     },
     computed: {
