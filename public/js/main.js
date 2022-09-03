@@ -3,7 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            page: 'games',
+            page: 'registration',
             about: '',
             game: '',
             log: true,
@@ -13,6 +13,7 @@ createApp({
             password: '',
             myTeam: 'U4',
             teamFilter: 'all',
+            gender: ''
         }
     },
     created() {
@@ -135,6 +136,22 @@ createApp({
                     e.classList.remove('d-none')
                 })
             }
+        },
+        selected: function(g) {
+            console.log(this.gender)
+
+            // const selection = document.querySelector(`#${label}`)
+            // // console.log(selection);
+            // if (selection.id === 'label_femenine') {
+            //     selection.setAttribute('style', 'background-color: pink !important; color: black !important; font-weight: bold !important;')
+            // } else if (selection.id === 'label_non_binary') {
+            //     selection.setAttribute('style', 'background-color: limegreen !important; color: black !important; font-weight: bold !important;')
+            // } else if (selection.id === 'label_male') {
+            //     selection.setAttribute('style', 'background-color: var(--sapphire) !important; color: black !important; font-weight: bold !important;')
+            // }
+        },
+        genderSelect: function(g) {
+            this.gender = g
         }
     },
     computed: {

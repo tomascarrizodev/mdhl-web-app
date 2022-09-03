@@ -227,6 +227,53 @@ table {
     text-decoration: none;
 }
 
+/** Registration */
+fieldset {
+    margin-bottom: 1.5rem;
+}
+label {
+    margin-bottom: 1rem;
+}
+
+.field_one input {
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #777;
+    padding: 3px 15px;
+}
+.field_one input::placeholder {
+    color: #ddd;
+}
+.field_one input:focus {
+    outline: solid 2px var(--green);
+}
+
+input[type="radio"], input[type="checkbox"] {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    /* display: none; */
+}
+
+#label_femenine, #label_non_binary, #label_male {
+    padding: .7rem;
+    border-radius: 6px;
+    background-color: #777;
+    border: none;
+    color:#fff;
+}
+
+#label_femenine.female_selected {
+    background-color: pink !important;
+}
+#label_male.male_selected {
+    background-color: var(--sapphire) !important;
+}
+#label_non_binary.non_binary_selected {
+    background-color: limegreen !important;
+}
+
 /*! ASIDE */
 
 #aside {
