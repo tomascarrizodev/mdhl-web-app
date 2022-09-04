@@ -28,15 +28,7 @@ createApp({
                 goalkeeper: false
             },
             checkbox: false,
-            jersey: {
-                youth_sm: false,
-                youth_md: false,
-                youth_lg: false,
-                small: false,
-                medium: false,
-                large: false,
-                xxl: false
-            },
+            jersey: '',
             shorts: {
                 youth_sm: false,
                 youth_md: false,
