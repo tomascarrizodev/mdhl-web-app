@@ -15,6 +15,37 @@ createApp({
             teamFilter: 'all',
             gender: '',
             grade: '',
+            position_nor: {
+                forward: false,
+                midfield: false,
+                defender: false,
+                goalkeeper: false
+            },
+            position_want: {
+                forward: false,
+                midfield: false,
+                defender: false,
+                goalkeeper: false
+            },
+            checkbox: false,
+            jersey: {
+                youth_sm: false,
+                youth_md: false,
+                youth_lg: false,
+                small: false,
+                medium: false,
+                large: false,
+                xxl: false
+            },
+            shorts: {
+                youth_sm: false,
+                youth_md: false,
+                youth_lg: false,
+                small: false,
+                medium: false,
+                large: false,
+                xxl: false
+            }
         }
     },
     created() {
@@ -156,6 +187,15 @@ createApp({
         },
         gradeSelect: function(g) {
             this.grade = g
+        },
+        showButton: function(position, arr) {
+
+        },
+        borrar: function(position, arr) {
+            arr.forEach(e => {
+                if (e === position) {
+                    position = ''
+                }})
         }
     },
     computed: {

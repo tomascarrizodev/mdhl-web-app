@@ -256,6 +256,15 @@ input[type="radio"], input[type="checkbox"] {
     /* display: none; */
 }
 
+.checkbox {
+    width: .7rem;
+    height: .7rem;
+    background-color: #fff;
+}
+.checkbox_checked {
+    background-color: var(--green);
+}
+
 #label_femenine, #label_non_binary, #label_male {
     padding: .7rem;
     border-radius: 6px;

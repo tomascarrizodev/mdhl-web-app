@@ -822,7 +822,7 @@
                         <fieldset>
                             <legend>Grade</legend>
                             <div class="d-flex justify-content-between">
-                                <div class="d-flex flex-column align-items-center">
+                                <div class="d-flex flex-column align-items-center gap-3">
                                     <!-- <label for="pre_school">
                                         <span>Pre-school</span>
                                         <input type="radio" name="grade" id="pre_school">
@@ -836,7 +836,7 @@
                                     <button v-if="grade !== '3rd'" class="non_selected" @click="gradeSelect(`3rd`)">3rd</button>
                                     <span v-if="grade === '3rd'" class="non_selected selected">3rd</span>
                                 </div>
-                                <div class="d-flex flex-column align-items-center">
+                                <div class="d-flex flex-column align-items-center gap-3">
                                     <button v-if="grade !== '1st'" class="non_selected" @click="gradeSelect(`1st`)">1st</button>
                                     <span v-if="grade === '1st'" class="non_selected selected">1st</span>
                                     <button v-if="grade !== '4th'" class="non_selected" @click="gradeSelect(`4th`)">4th</button>
@@ -850,7 +850,7 @@
                                         <input type="radio" name="grade" id="fourth_grade">
                                     </label> -->
                                 </div>
-                                <div class="d-flex flex-column align-items-center">
+                                <div class="d-flex flex-column align-items-center gap-3">
                                     <button v-if="grade !== '2nd'" class="non_selected" @click="gradeSelect(`2nd`)">2nd</button>
                                     <span v-if="grade === '2nd'" class="non_selected selected">2nd</span>
                                     <button v-if="grade !== '5th'" class="non_selected" @click="gradeSelect(`5th`)">5th</button>
@@ -894,64 +894,82 @@
                         <fieldset>
                             <legend>What position do you normally play? <span>(check all that apply)</span></legend>
                             <div class="d-flex justify-content-around">
-                                <div class="d-flex flex-column align-items-center">
-                                    <label for="forward_nor">
+                                <div class="d-flex flex-column align-items-center gap-3">
+                                    <!-- <label for="forward_nor">
                                         <input type="checkbox" name="position_nor" id="forward_nor" />
                                         <span>Forward</span>
                                     </label>
                                     <label for="defender_nor">
                                         <input type="checkbox" name="position_nor" id="defender_nor" />
                                         <span>Defender</span>
-                                    </label>
+                                    </label> -->
+                                    <button v-if="!position_nor.forward" class="non_selected" @click="position_nor.forward = true">Forward</button>
+                                    <button v-if="position_nor.forward" class="non_selected selected" @click="position_nor.forward = false">Forward</button>
+                                    <button v-if="!position_nor.defender" class="non_selected" @click="position_nor.defender = true">Defender</button>
+                                    <button v-if="position_nor.defender" class="non_selected selected" @click="position_nor.defender = false">Defender</button>
                                 </div>
-                                <div class="d-flex flex-column align-items-center">
-                                    <label for="midfield_nor">
+                                <div class="d-flex flex-column align-items-center gap-3">
+                                    <!-- <label for="midfield_nor">
                                         <input type="checkbox" name="position_nor" id="midfield_nor" />
                                         <span>Midfield</span>
                                     </label>
                                     <label for="goalkeeper_nor">
                                         <input type="checkbox" name="position_nor" id="goalkeeper_nor" />
                                         <span>Goalkeeper</span>
-                                    </label>
+                                    </label> -->
+                                    <button v-if="!position_nor.midfield" class="non_selected" @click="position_nor.midfield = true">Midfield</button>
+                                    <button v-if="position_nor.midfield" class="non_selected selected" @click="position_nor.midfield = false">Midfield</button>
+                                    <button v-if="!position_nor.goalkeeper" class="non_selected" @click="position_nor.goalkeeper = true">Goalkeeper</button>
+                                    <button v-if="position_nor.goalkeeper" class="non_selected selected" @click="position_nor.goalkeeper = false">Goalkeeper</button>
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
                             <legend>What position do you want to play? <span>(check all that apply)</span></legend>
                             <div class="d-flex justify-content-around">
-                                <div class="d-flex flex-column align-items-center">
-                                    <label for="forward_want">
+                                <div class="d-flex flex-column align-items-center gap-3">
+                                    <!-- <label for="forward_want">
                                         <input type="checkbox" name="position_want" id="forward_want" />
                                         <span>Forward</span>
                                     </label>
                                     <label for="defender_want">
                                         <input type="checkbox" name="position_want" id="defender_want" />
                                         <span>Defender</span>
-                                    </label>
+                                    </label> -->
+                                    <button v-if="!position_want.forward" class="non_selected" @click="position_want.forward = true">Forward</button>
+                                    <button v-if="position_want.forward" class="non_selected selected" @click="position_want.forward = false">Forward</button>
+                                    <button v-if="!position_want.defender" class="non_selected" @click="position_want.defender = true">Defender</button>
+                                    <button v-if="position_want.defender" class="non_selected selected" @click="position_want.defender = false">Defender</button>
                                 </div>
-                                <div class="d-flex flex-column align-items-center">
-                                    <label for="midfield_want">
+                                <div class="d-flex flex-column align-items-center gap-3">
+                                    <!-- <label for="midfield_want">
                                         <input type="checkbox" name="position_want" id="midfield_want" />
                                         <span>Midfield</span>
                                     </label>
                                     <label for="goalkeeper_want">
                                         <input type="checkbox" name="position_want" id="goalkeeper_want" />
                                         <span>Goalkeeper</span>
-                                    </label>
+                                    </label> -->
+                                    <button v-if="!position_want.midfield" class="non_selected" @click="position_want.midfield = true">Midfield</button>
+                                    <button v-if="position_want.midfield" class="non_selected selected" @click="position_want.midfield = false">Midfield</button>
+                                    <button v-if="!position_want.goalkeeper" class="non_selected" @click="position_want.goalkeeper = true">Goalkeeper</button>
+                                    <button v-if="position_want.goalkeeper" class="non_selected selected" @click="position_want.goalkeeper = false">Goalkeeper</button>
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
                             <label for="uniform_already" class="d-flex justify-content-evenly align-items-center">
                                 <span>Already have an uniform</span>
-                                <input type="checkbox" name="uniform_already" id="uniform_already">
+                                <span class="checkbox" v-if="checkbox === false" @click="checkbox = true"></span>
+                                <span class="checkbox checkbox_checked text-light" v-if="checkbox === true" @click="checkbox = false"></span>
+                                <!-- <input type="checkbox" name="uniform_already" id="uniform_already" class="visible" /> -->
                             </label>
                         </fieldset>
                         <fieldset>
                             <legend>Jersey size</legend>
                             <div class="d-flex justify-content-around">
-                                <div class="d-flex flex-column align-items-center">
-                                    <label for="youth_sm">
+                                <div class="d-flex flex-column align-items-center gap-3">
+                                    <!-- <label for="youth_sm">
                                         <span>Youth Small</span>
                                         <input type="radio" name="jersey_size" id="youth_sm">
                                     </label>
@@ -962,10 +980,20 @@
                                     <label for="youth_lg">
                                         <span>Youth Large</span>
                                         <input type="radio" name="jersey_size" id="youth_lg">
-                                    </label>
+                                    </label> -->
+                                    <button class="non_selected" v-if="jersey !== 'youth_sm'" @click="jersey = `youth_sm`">Youth Small</button>
+                                    <span class="non_selected selected" v-if="jersey === 'youth_sm'">Youth Small</span>
+                                    <button class="non_selected" v-if="jersey !== 'youth_md'" @click="jersey = `youth_md`">Youth Medium</button>
+                                    <span class="non_selected selected" v-if="jersey === 'youth_md'">Youth Medium</span>
+                                    <button class="non_selected" v-if="jersey !== 'youth_lg'" @click="jersey = `youth_lg`">Youth Large</button>
+                                    <span class="non_selected selected" v-if="jersey === 'youth_lg'">Youth Large</span>
+                                    <!-- <button class="non_selected" v-if="!jersey.youth_md" @click="jersey.youth_md = true">Youth Medium</button>
+                                    <button class="non_selected selected" v-if="jersey.youth_md" @click="jersey.youth_md = false">Youth Medium</button>
+                                    <button class="non_selected" v-if="!jersey.youth_lg" @click="jersey.youth_lg = true">Youth Large</button>
+                                    <button class="non_selected selected" v-if="jersey.youth_lg" @click="jersey.youth_lg = false">Youth Large</button> -->
                                 </div>
-                                <div class="d-flex flex-column align-items-center">
-                                    <label for="j_small">
+                                <div class="d-flex flex-column align-items-center gap-3">
+                                    <!-- <label for="j_small">
                                         <span>Small</span>
                                         <input type="radio" name="jersey_size" id="j_small">
                                     </label>
@@ -980,7 +1008,15 @@
                                     <label for="j_xxl">
                                         <span>Extra-Large</span>
                                         <input type="radio" name="jersey_size" id="j_xxl">
-                                    </label>
+                                    </label> -->
+                                    <button class="non_selected" v-if="jersey !== 'sm'" @click="jersey = `sm`">Small</button>
+                                    <span class="non_selected selected" v-if="jersey === 'sm'">Small</span>
+                                    <button class="non_selected" v-if="jersey !== 'md'" @click="jersey = `md`">Medium</button>
+                                    <span class="non_selected selected" v-if="jersey === 'md'">Medium</span>
+                                    <button class="non_selected" v-if="jersey !== 'lg'" @click="jersey = `lg`">Large</button>
+                                    <span class="non_selected selected" v-if="jersey === 'lg'">Large</span>
+                                    <button class="non_selected" v-if="jersey !== 'xxl'" @click="jersey = `xxl`">Extra Large</button>
+                                    <span class="non_selected selected" v-if="jersey === 'xxl'">Extra Large</span>
                                 </div>
                             </div>
                         </fieldset>
@@ -988,8 +1024,8 @@
                             <legend>Shorts size</legend>
                             
                             <div class="d-flex justify-content-around">
-                                <div class="d-flex flex-column align-items-center">
-                                    <label for="youth_sm">
+                                <div class="d-flex flex-column align-items-center gap-3">
+                                    <!-- <label for="youth_sm">
                                         <span>Youth Small</span>
                                         <input type="radio" name="shorts_size" id="youth_sm">
                                     </label>
@@ -1000,10 +1036,16 @@
                                     <label for="youth_lg">
                                         <span>Youth Large</span>
                                         <input type="radio" name="shorts_size" id="youth_lg">
-                                    </label>
+                                    </label> -->
+                                    <button class="non_selected" v-if="shorts !== 'youth_sm'" @click="shorts = `youth_sm`">Youth Small</button>
+                                    <span class="non_selected selected" v-if="shorts === 'youth_sm'">Youth Small</span>
+                                    <button class="non_selected" v-if="shorts !== 'youth_md'" @click="shorts = `youth_md`">Youth Medium</button>
+                                    <span class="non_selected selected" v-if="shorts === 'youth_md'">Youth Medium</span>
+                                    <button class="non_selected" v-if="shorts !== 'youth_lg'" @click="shorts = `youth_lg`">Youth Large</button>
+                                    <span class="non_selected selected" v-if="shorts === 'youth_lg'">Youth Large</span>
                                 </div>
-                                <div class="d-flex flex-column align-items-center">
-                                    <label for="sh_small">
+                                <div class="d-flex flex-column align-items-center gap-3">
+                                    <!-- <label for="sh_small">
                                         <span>Small</span>
                                         <input type="radio" name="shorts_size" id="sh_small">
                                     </label>
@@ -1018,7 +1060,15 @@
                                     <label for="sh_xxl">
                                         <span>Extra-Large</span>
                                         <input type="radio" name="shorts_size" id="sh_xxl">
-                                    </label>
+                                    </label> -->
+                                    <button class="non_selected" v-if="shorts !== 'sm'" @click="shorts = `sm`">Small</button>
+                                    <span class="non_selected selected" v-if="shorts === 'sm'">Small</span>
+                                    <button class="non_selected" v-if="shorts !== 'md'" @click="shorts = `md`">Medium</button>
+                                    <span class="non_selected selected" v-if="shorts === 'md'">Medium</span>
+                                    <button class="non_selected" v-if="shorts !== 'lg'" @click="shorts = `lg`">Large</button>
+                                    <span class="non_selected selected" v-if="shorts === 'lg'">Large</span>
+                                    <button class="non_selected" v-if="shorts !== 'xxl'" @click="shorts = `xxl`">Extra Large</button>
+                                    <span class="non_selected selected" v-if="shorts === 'xxl'">Extra Large</span>
                                 </div>
                             </div>
                         </fieldset>
