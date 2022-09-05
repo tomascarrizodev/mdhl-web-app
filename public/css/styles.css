@@ -64,7 +64,7 @@ body {
 
 #main {
     color: #fff;
-    background-color: #444;
+    background-color: #252525;
     margin: 20px;
     border-radius: 5px;
     margin-top: 15vh;
@@ -312,14 +312,37 @@ input[type="radio"], input[type="checkbox"] {
     filter: invert(1);
 }
 
+/** Profile */
+.reset_profile {
+    background-color: var(--red);
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+}
+.reset_profile picture {
+    background-color: #9c3624;
+}
+
+.save_profile {
+    background-color: #05A774;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+}
+.save_profile picture {
+    background-color: #027d56;
+}
+
 /*! ASIDE */
 
-#aside {
+#aside, #aside_log {
     position: absolute;
     top: 15vh;
     height: 80%;
     width: 87.5vw;
-    background-color: #444;
+    background-color: #252525;
 }
 
 #aside div h4 {

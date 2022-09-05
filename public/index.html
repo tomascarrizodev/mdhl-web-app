@@ -973,6 +973,74 @@
                         </button>
                     </form>
                 </div>
+
+                <div id="principal" v-if="page === `user`" class="d-flex flex-column justify-content-evenly align-items-center">
+                    <h2>Edit Profile</h2>
+                    <form action="" class="field_one">
+                        <div class="d-flex flex-column gap-3">
+                            <label for="userName">User Name</label>
+                            <input type="text" id="userName"  v-model="newProfile.userName" />
+                            <div>
+                                <label for="userPass">Password</label>
+                                <input type="password" id="userPass" v-model="newProfile.password" />
+                                <a @click="showPass()">
+                                    <svg v-if="!showPassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                    </svg>
+                                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                                        <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
+                                        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div>
+                                <label for="userConfirmPass">Confirm Password</label>
+                                <input type="password" id="userConfirmPass"  v-model="newProfile.newPassword" />
+                                <a @click="showPass()">
+                                    <svg v-if="!showPassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                    </svg>
+                                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                                        <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
+                                        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <select name="" id="" v-model="newProfile.myTeam">
+                                <option value="U1" id="U1">U1</option>
+                                <option value="U2" id="U2">U2</option>
+                                <option value="U3" id="U3">U3</option>
+                                <option value="U4" id="U4">U4</option>
+                                <option value="U5" id="U5">U5</option>
+                                <option value="U6" id="U6">U6</option>
+                            </select>
+                        </div>
+                    </form>
+                    <div class="d-flex w-100 flex-column-reverse align-items-center gap-3 justify-content-between mt-3">
+                        <button class="reset_profile w-75 d-flex justify-content-end">
+                            <span class="m-auto">Reset</span>
+                            <picture class="p-2">
+                                <img src="./assets/img/arrow_back.png" alt="">
+                            </picture>
+                        </button>
+                        <button class="save_profile w-75 d-flex justify-content-end">
+                            <span class="m-auto">Save</span>
+                            <picture class="p-2">
+                                <img src="./assets/img/icon _check.png" alt="">
+                            </picture>
+                        </button>
+                    </div>
+                </div>
+                <aside id="aside_log" class="offcanvas d-flex flex-column justify-content-evenly align-items-center">
+                    <button @click="showLog()" class="mr-auto">x</button>
+                    <h4 @click="showLog(`user`)">Profile</h4>
+                    <h4 @click="showLog(`about_log`)">About</h4>
+                    <h4 @click="showLog(`rules_log`)">Rules</h4>
+                    <h4 @click="showLog(`contact_log`)">Contact</h4>
+                    <h4 class="text-danger" @click="showLog(`log_out`)">Log out</h4>
+                </aside>
             </div>
 
             <!--! SIGN -->
@@ -1036,9 +1104,9 @@
                 <img width="24" height="24" v-else src="./assets/img/registration.png" alt="">
                 <span>Registration</span>
             </a>
-            <a href="#" @click="toggleClass(`user`)" id="user" class="icon d-flex flex-column justify-content-around align-items-center text-decoration-none">
-                <img width="24" height="24" v-if="page === 'user'" src="./assets/img/user_on.png" alt="">
-                <img width="24" height="24" v-else src="./assets/img/user.png" alt="">
+            <a href="#" @click="showLog()" id="user" class="icon d-flex flex-column justify-content-around align-items-center text-decoration-none">
+                <img width="24" height="24" id="user_on" class="d-none" src="./assets/img/user_on.png" alt="">
+                <img width="24" height="24" id="user" class="" src="./assets/img/user.png" alt="">
                 <span>User</span>
             </a>
         </nav>

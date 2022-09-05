@@ -3,14 +3,14 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            page: 'registration',
+            page: 'user',
             about: '',
             game: '',
             log: true,
             name: '',
-            userName: '',
+            userName: 'Tomas',
             email: '',
-            password: '',
+            password: 'contraseña',
             myTeam: 'U4',
             teamFilter: 'all',
             gender: '',
@@ -37,7 +37,14 @@ createApp({
                 medium: false,
                 large: false,
                 xxl: false
-            }
+            },
+            newProfile: {
+                userName: '',
+                password: '',
+                newPassword: '',
+                myTeam: ''
+            },
+            showPassword: false
         }
     },
     created() {
@@ -188,6 +195,53 @@ createApp({
                 if (e === position) {
                     position = ''
                 }})
+        },
+        showLog: function(p) {
+            document.querySelector('#user_on').classList.toggle('d-none')
+            document.querySelector('#user').classList.toggle('d-none')
+            document.querySelector('#aside_log').classList.toggle('show')
+            document.querySelector('#nav').classList.toggle('hide_nav')
+            document.querySelector('#principal').classList.toggle('d-none')
+            if (p === 'user') {
+                this.page = p
+                this.profileUser()
+            } else if (p === 'about_log') {
+                this.page = p
+            } else if (p === 'rules_log') {
+                this.page = p
+            } else if (p === 'contact_log') {
+                this.page = p
+            } else if (p === 'log_out') {
+                this.log = false
+                this.page = 'home'
+            }
+        },
+        profileUser: function() {
+            document.querySelector('#userName').placeholder = this.userName
+            document.querySelector('#userPass').placeholder = '**********'
+            document.querySelector('#userConfirmPass').placeholder = '**********'
+            document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
+            
+        },
+        showPass: function() {
+            
+            if (this.showPassword) {
+                // document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
+                this.showPassword = false
+                document.querySelector('#userPass').type = 'text'
+                document.querySelector('#userConfirmPass').type = 'text'
+                document.querySelector('#userName').placeholder = this.userName
+                document.querySelector('#userPass').placeholder = this.password
+                document.querySelector('#userConfirmPass').placeholder = this.password
+            } else {
+                this.showPassword = true
+                document.querySelector('#userPass').type = 'password'
+                document.querySelector('#userConfirmPass').type = 'password'
+                document.querySelector('#userName').placeholder = this.userName
+                document.querySelector('#userPass').placeholder = '**********'
+                document.querySelector('#userConfirmPass').placeholder = '**********'
+            }
+            document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
         }
     },
     computed: {
