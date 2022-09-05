@@ -978,35 +978,30 @@
                     <h2>Edit Profile</h2>
                     <form action="" class="field_one">
                         <div class="d-flex flex-column gap-3">
-                            <label for="userName">User Name</label>
-                            <input type="text" id="userName"  v-model="newProfile.userName" />
                             <div>
-                                <label for="userPass">Password</label>
-                                <input type="password" id="userPass" v-model="newProfile.password" />
-                                <a @click="showPass()">
-                                    <svg v-if="!showPassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                    </svg>
-                                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
-                                        <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
-                                        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
-                                    </svg>
-                                </a>
+                                <label for="userPass">Password</label><br />
+                                <input type="text" id="userPass" v-model="newProfile.password" autocomplete="off" />
+                                <div v-if="this.newProfile.password !== this.password && this.newProfile.password !== ''" class="p-2 bg-danger text-light">
+                                    <p class="m-auto text-center">Wrong Password</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <label for="userName">User Name</label>
+                                <input class="disabled" v-if="this.newProfile.password !== this.password" type="text" id="userName" v-model="userName" disabled />
+                                <input v-if="this.newProfile.password === this.password" type="text" id="userName" v-model="newProfile.userName" autocomplete="off" />
                             </div>
                             <div>
-                                <label for="userConfirmPass">Confirm Password</label>
-                                <input type="password" id="userConfirmPass"  v-model="newProfile.newPassword" />
-                                <a @click="showPass()">
-                                    <svg v-if="!showPassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                    </svg>
-                                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
-                                        <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
-                                        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
-                                    </svg>
-                                </a>
+                                <label for="userNewPass">New Password</label><br />
+                                <input class="disabled" type="text" v-if="this.newProfile.password !== this.password" id="userNewPass" value="***********" disabled />
+                                <input type="text" id="userNewPass" v-if="this.newProfile.password === this.password" v-model="newProfile.newPassword" autocomplete="off" />
+                            </div>
+                            <div>
+                                <label for="userConfirmPass">Confirm New Password</label><br />
+                                <input class="disabled" type="text" id="userConfirmPass" v-if="this.newProfile.password !== this.password" value="***********" disabled />
+                                <input type="text" id="userConfirmPass" v-if="this.newProfile.password === this.password" v-model="newProfile.confirmNewPassword" autocomplete="off" />
+                                <div v-if="newProfile.confirmNewPassword !== newProfile.newPassword && newProfile.confirmNewPassword !== ''" class="p-2 bg-danger text-light">
+                                    <p class="m-auto text-center">Not matching Passwords</p>
+                                </div>
                             </div>
                             <select name="" id="" v-model="newProfile.myTeam">
                                 <option value="U1" id="U1">U1</option>
@@ -1019,13 +1014,13 @@
                         </div>
                     </form>
                     <div class="d-flex w-100 flex-column-reverse align-items-center gap-3 justify-content-between mt-3">
-                        <button class="reset_profile w-75 d-flex justify-content-end">
+                        <button @click="resetUser()" class="reset_profile w-75 d-flex justify-content-end">
                             <span class="m-auto">Reset</span>
                             <picture class="p-2">
                                 <img src="./assets/img/arrow_back.png" alt="">
                             </picture>
                         </button>
-                        <button class="save_profile w-75 d-flex justify-content-end">
+                        <button @click="saveUser()" class="save_profile w-75 d-flex justify-content-end">
                             <span class="m-auto">Save</span>
                             <picture class="p-2">
                                 <img src="./assets/img/icon _check.png" alt="">
@@ -1033,6 +1028,44 @@
                         </button>
                     </div>
                 </div>
+
+                <div id="principal" v-if="page === `about_log`" class="d-flex flex-column justify-content-evenly align-items-center">
+                    <h2>About MDHL</h2>
+                    <button class="about_box mission" id="mission" @click="showAbout(`missison_text`, `arrow_mission`)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">Mission</span>
+                            <picture class="arrow">
+                                <img id="arrow_mission" class="arrow_class" src="./assets/img/arrow_down.png" alt="arrow">
+                            </picture>
+                        </div>
+                        <div class="mission_text" v-if="about === `missison_text`">
+                            <span>To support young athletes living in Chicago's northside neighborhoods, who have an interest in learning and playing soccer, with opportunities to learn and practice skills related to the game of soccer, specifically those skills around team cooperation and good sportsmanship.</span>
+                        </div>
+                    </button>
+                    <button id="vision" class="about_box vision" @click="showAbout(`vision_text`, `arrow_vision`)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">Vision</span>
+                            <picture class="arrow">
+                                <img id="arrow_vision" class="arrow_class" src="./assets/img/arrow_down.png" alt="arrow">
+                            </picture>
+                        </div>
+                        <div class="vision_text" v-if="about === `vision_text`">
+                            <span>The Mighty Ducks Hockey League aspires to develop strong, well-rounded, and mindful athletes through the building of character, self-discipline, and leadership.</span>
+                        </div>
+                    </button>
+                    <button id="general_info" class="about_box general_info" @click="showAbout(`general_info_text`, `arrow_general`)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">General Information</span>
+                            <picture class="arrow">
+                                <img id="arrow_general" class="arrow_class" src="./assets/img/arrow_down.png" alt="arrow">
+                            </picture>
+                        </div>
+                        <div class="general_info_text hidden_text" v-if="about === `general_info_text`">
+                            <span>The Mighty Ducks Hockey League was established in 1996 to provide athletes residing in Chicago's northside neighborhoods an environment in which to learn and play soccer. To be a member of MDHL, you must be between the ages of 4 - 12 and reside in a Chicago northside neighborhood. MDHL is run by a small full-time staff, and relies on the generous volunteer time of parents and previous league members.</span>
+                        </div>
+                    </button>
+                </div>
+
                 <aside id="aside_log" class="offcanvas d-flex flex-column justify-content-evenly align-items-center">
                     <button @click="showLog()" class="mr-auto">x</button>
                     <h4 @click="showLog(`user`)">Profile</h4>

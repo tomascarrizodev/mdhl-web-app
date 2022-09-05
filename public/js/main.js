@@ -8,7 +8,7 @@ createApp({
             game: '',
             log: true,
             name: '',
-            userName: 'Tomas',
+            userName: 'tomascarrizodev',
             email: '',
             password: 'contraseña',
             myTeam: 'U4',
@@ -42,13 +42,17 @@ createApp({
                 userName: '',
                 password: '',
                 newPassword: '',
+                confirmNewPassword: '',
                 myTeam: ''
             },
-            showPassword: false
+            showPassword: false,
+            wrongPassword: false,
+            noMatchPassword: false
         }
     },
     created() {
-        
+        this.newProfile.userName = this.userName
+        this.newProfile.myTeam = this.myTeam
     },
     mounted: function() {
         this.loader()
@@ -56,7 +60,13 @@ createApp({
         if (this.page === 'games') {
             this.gameTable()
         }
-        
+        if (this.newProfile.password === this.password) {
+            this.changeProfile()
+        } else if (this.newProfile.password === '') {
+            this.changeProfile()
+        } else if (this.newProfile.password !== this.password) {
+            this.wrongPassword = true
+        }
     },
     methods: {
         loader: function () {
@@ -204,7 +214,11 @@ createApp({
             document.querySelector('#principal').classList.toggle('d-none')
             if (p === 'user') {
                 this.page = p
-                this.profileUser()
+                document.querySelector('#userName').value = this.userName
+                // document.querySelector('#userPass').value = '**********'
+                // document.querySelector('#userConfirmPass').value = '**********'
+                document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
+                // this.profileUser()
             } else if (p === 'about_log') {
                 this.page = p
             } else if (p === 'rules_log') {
@@ -216,13 +230,13 @@ createApp({
                 this.page = 'home'
             }
         },
-        profileUser: function() {
-            document.querySelector('#userName').placeholder = this.userName
-            document.querySelector('#userPass').placeholder = '**********'
-            document.querySelector('#userConfirmPass').placeholder = '**********'
-            document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
+        // profileUser: function() {
+        //     document.querySelector('#userName').placeholder = this.userName
+        //     document.querySelector('#userPass').placeholder = '**********'
+        //     document.querySelector('#userConfirmPass').placeholder = '**********'
+        //     document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
             
-        },
+        // },
         showPass: function() {
             
             if (this.showPassword) {
@@ -242,6 +256,51 @@ createApp({
                 document.querySelector('#userConfirmPass').placeholder = '**********'
             }
             document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
+        },
+        resetUser: function() {
+            this.newProfile.userName = this.userName
+            this.newProfile.password = this.password
+            this.newProfile.newPassword = this.password
+            this.newProfile.myTeam = this.myTeam
+        },
+        changeProfile: function() {
+            if (this.newProfile.password === this.password) {
+                document.querySelector('#userName').classList.remove('disabled')
+                document.querySelector('#userName').removeAttribute('disabled')
+                document.querySelector('#userNewPass').classList.remove('disabled')
+                document.querySelector('#userNewPass').removeAttribute('disabled')
+                document.querySelector('#userConfirmPass').classList.remove('disabled')
+                document.querySelector('#userConfirmPass').removeAttribute('disabled')
+                if (this.newProfile.newPassword === this.newProfile.confirmNewPassword) {
+                    this.userName = this.newProfile.userName
+                    this.password = this.newProfile.newPassword
+                    this.myTeam = this.newProfile.myTeam
+                    this.wrongPassword = false
+                } else {
+                    this.noMatchPassword = true
+                }
+            } else {
+                document.querySelector('#userName').classList.add('disabled')
+                document.querySelector('#userName').setAttribute('disabled', 'true')
+                document.querySelector('#userNewPass').classList.add('disabled')
+                document.querySelector('#userNewPass').setAttribute('disabled', 'true')
+                document.querySelector('#userConfirmPass').classList.add('disabled')
+                document.querySelector('#userConfirmPass').setAttribute('disabled', 'true')
+            }
+        },
+        saveUser: function() {
+            if (this.newProfile.password === this.password) {
+                if (this.newProfile.newPassword === this.newProfile.confirmNewPassword) {
+                    this.userName = this.newProfile.userName
+                    this.password = this.newProfile.newPassword
+                    this.myTeam = this.newProfile.myTeam
+                    this.wrongPassword = false
+                } else {
+                    this.noMatchPassword = true
+                }
+            } else {
+                this.wrongPassword = true
+            }
         }
     },
     computed: {

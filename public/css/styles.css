@@ -334,6 +334,11 @@ input[type="radio"], input[type="checkbox"] {
 .save_profile picture {
     background-color: #027d56;
 }
+.disabled {
+    font-style: italic;
+    background-color: #555 !important;
+    color: #ccc !important;
+}
 
 /*! ASIDE */
 
