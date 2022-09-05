@@ -3,7 +3,8 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            page: 'user',
+            screen: 'login',
+            page: 'contact_log',
             about: '',
             game: '',
             log: true,
@@ -56,17 +57,18 @@ createApp({
     },
     mounted: function() {
         this.loader()
-        this.header()
-        if (this.page === 'games') {
-            this.gameTable()
-        }
-        if (this.newProfile.password === this.password) {
-            this.changeProfile()
-        } else if (this.newProfile.password === '') {
-            this.changeProfile()
-        } else if (this.newProfile.password !== this.password) {
-            this.wrongPassword = true
-        }
+        if (this.screen === '') {
+            this.header()
+            if (this.page === 'games') {
+                this.gameTable()
+            }
+            if (this.newProfile.password === this.password) {
+                this.changeProfile()
+            } else if (this.newProfile.password === '') {
+                this.changeProfile()
+            } else if (this.newProfile.password !== this.password) {
+                this.wrongPassword = true
+        }}
     },
     methods: {
         loader: function () {
@@ -212,6 +214,8 @@ createApp({
             document.querySelector('#aside_log').classList.toggle('show')
             document.querySelector('#nav').classList.toggle('hide_nav')
             document.querySelector('#principal').classList.toggle('d-none')
+            // document.querySelector('#back_top').classList.toggle('d-none')
+            
             if (p === 'user') {
                 this.page = p
                 document.querySelector('#userName').value = this.userName
@@ -223,12 +227,16 @@ createApp({
                 this.page = p
             } else if (p === 'rules_log') {
                 this.page = p
+                // document.querySelector('#rules_log').classList.toggle('d-none')
+
             } else if (p === 'contact_log') {
                 this.page = p
             } else if (p === 'log_out') {
                 this.log = false
                 this.page = 'home'
             }
+            document.querySelector('#rules_log').classList.toggle('d-none')
+
         },
         // profileUser: function() {
         //     document.querySelector('#userName').placeholder = this.userName

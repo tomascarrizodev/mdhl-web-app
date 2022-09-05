@@ -222,6 +222,12 @@ table {
     border: none;
     border-radius: 5px;
 }
+#download_rules {
+    padding: 10px 10px;
+    position: fixed;
+    top: 85px;
+    left: 10%;
+}
 .back_top a {
     color: white;
     text-decoration: none;
@@ -235,17 +241,17 @@ label {
     margin-bottom: 1rem;
 }
 
-.field_one input {
+.field_one input, .field_one textarea {
     border: none;
     border-radius: 6px;
     color: #fff;
     background-color: #777;
     padding: 10px 15px;
 }
-.field_one input::placeholder {
+.field_one input::placeholder, .field_one textarea::placeholder{
     color: #ddd;
 }
-.field_one input:focus {
+.field_one input:focus, .field_one textarea:focus {
     outline: solid 2px var(--green);
 }
 
@@ -404,4 +410,25 @@ input[type="radio"], input[type="checkbox"] {
 }
 .hide_nav {
     transform: translateY(100%);
+}
+
+/*!--------------------- LOGIN ---------------------*/
+
+#login {
+    height: 100vh;
+    width: 100vw;
+}
+
+#bg_image {
+    height: 0;
+    position: relative;
+    left: -35%;
+    top: 10%;
+    /* background: url('../assets/img/logo.png') no-repeat 120% ; */
+}
+#bg_image img {
+    height: 40vh;
+    position: absolute;
+    z-index: -100;
+    opacity: 0.3;
 }
