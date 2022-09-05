@@ -240,7 +240,7 @@ label {
     border-radius: 6px;
     color: #fff;
     background-color: #777;
-    padding: 3px 15px;
+    padding: 10px 15px;
 }
 .field_one input::placeholder {
     color: #ddd;
@@ -253,7 +253,6 @@ input[type="radio"], input[type="checkbox"] {
     visibility: hidden;
     width: 0;
     height: 0;
-    /* display: none; */
 }
 
 .checkbox {
@@ -293,6 +292,24 @@ input[type="radio"], input[type="checkbox"] {
 .selected {
     background-color: var(--green);
     font-weight: bold;
+}
+
+.submit_form {
+    padding: 3%;
+    padding-right: 3%;
+    border: none;
+    border-radius: 3px;
+    background-color: #05A774;
+    color: white;
+    font-weight: bold;
+}
+.submit_form picture {
+    width: 32px;
+    height: 32px;
+    background-color: #14654E;
+}
+.submit_form picture img {
+    filter: invert(1);
 }
 
 /*! ASIDE */
