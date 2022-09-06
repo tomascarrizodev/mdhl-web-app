@@ -3,14 +3,14 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            screen: 'login',
-            page: 'contact_log',
+            screen: '',
+            page: 'games',
             about: '',
             game: '',
             log: true,
             name: '',
             userName: 'tomascarrizodev',
-            email: '',
+            email: 'tomascarrizo.dev@gmail.com',
             password: 'contraseña',
             myTeam: 'U4',
             teamFilter: 'all',
@@ -48,7 +48,21 @@ createApp({
             },
             showPassword: false,
             wrongPassword: false,
-            noMatchPassword: false
+            noMatchPassword: false,
+            loggedIn: {
+                email: '',
+                password: ''
+            },
+            canLog: '',
+            wrong: false,
+            invalid: false,
+            signProfile: {
+                email: '',
+                userName: '',
+                password: '',
+                confirmPassword: '',
+                myTeam: ''
+            }
         }
     },
     created() {
@@ -101,6 +115,9 @@ createApp({
             allLinks.forEach(e => e.classList.remove('page'))
             this.page = element
             document.querySelector(`#${element}`).classList.add('page')
+            if (element === 'games') {
+                this.gameTable()
+            }
         },
         showAbout: function(about, arrow) {
             if (this.about === '') {
@@ -309,6 +326,54 @@ createApp({
             } else {
                 this.wrongPassword = true
             }
+        },
+        backToHome: function() {
+            this.screen = ''
+            this.page = 'home'
+        },
+        logIn: function() {
+            if (this.loggedIn.email === this.email) {
+                this.wrong = false
+                if (this.loggedIn.password === this.password) {
+                    this.screen = ''
+                    this.page = 'home'
+                    this.log = true
+                    this.wrong = false
+                } else if (this.loggedIn.password === '') {
+                    this.invalid = true
+                    console.log('Please enter password');
+                    // document.querySelector('#wrong').classList.replace('bg-danger', 'bg-warning')
+                    // document.querySelector('#invalid_msg').innerHTML = 'Please, enter a password'
+                } else if (this.loggedIn.password !== this.password) {
+                    this.wrong = true
+                    console.log('Wrong password, please try again');
+                    // document.querySelector('#wrong').classList.replace('bg-warning', 'bg-danger')
+                    // document.querySelector('#wrong_msg').innerHTML = 'Wrong password'
+                }
+            } else if (this.loggedIn === '') {
+                this.invalid = true
+                console.log('Please enter email');
+                // document.querySelector('#wrong').classList.replace('bg-danger', 'bg-warning')
+                // document.querySelector('#invalid_msg').innerHTML = 'Please, enter a valid email'
+            } else {
+                console.log('Wrong email direction');
+                this.wrong = true
+                // document.querySelector('#wrong').classList.replace('bg-warning', 'bg-danger')
+                // document.querySelector('#wrong_msg').innerHTML = 'Wrong email'
+            }
+        },
+        signUp: function() {
+            this.email = this.signProfile.email
+            this.userName = this.signProfile.userName
+            this.password = this.signProfile.password
+            this.log = true 
+            this.screen = ''
+            this.page = 'home'
+        },
+        recover: function() {
+            this.log = true
+            this.screen = ''
+            this.page = 'home'
         }
     },
     computed: {

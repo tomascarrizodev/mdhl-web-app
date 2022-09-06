@@ -62,7 +62,7 @@ body {
 
 /*! CONTENT */
 
-#main {
+.main {
     color: #fff;
     background-color: #252525;
     margin: 20px;
@@ -424,11 +424,51 @@ input[type="radio"], input[type="checkbox"] {
     position: relative;
     left: -35%;
     top: 10%;
-    /* background: url('../assets/img/logo.png') no-repeat 120% ; */
 }
 #bg_image img {
     height: 40vh;
     position: absolute;
     z-index: -100;
     opacity: 0.3;
+}
+
+#principal_screen {
+    padding: 10px 10px;
+    margin: 20px;
+    gap: 10px;
+    background-color: #25252586;
+}
+.main_screen {
+    color: #fff;
+    margin: 20px;
+    border-radius: 5px;
+}
+.button_container button {
+    border: none;
+    border-radius: 10px;
+    background-color: #555;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 10pt;
+}
+
+.link_container {
+    font-size: 9pt;
+    color: var(--yellow);
+    margin-top: 20%;
+}
+
+/*!--------------------- RECOVER ---------------------*/
+
+.recover {
+    background-color: #0047FF;
+}
+
+.recover picture {
+    background-color: #002fa7;
+}
+
+.my_team {
+    background: linear-gradient(90deg, #00A3FF, #0047FF, #00A3FF, #0047FF) !important;
+    color: #fff !important;
 }
