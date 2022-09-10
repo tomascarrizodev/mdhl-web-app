@@ -484,7 +484,7 @@
                 <div v-if="log">
                     <div id="principal" v-if="page === `home`" class="d-flex flex-column justify-content-evenly align-items-center">
                         <h2>Upcoming Events</h2>
-                        <div class="team_dates d-flex flex-column text-center">
+                        <div class="team_dates d-flex flex-column text-center" @click="toggleClass(`games`)">
                             <span class="m-0 fw-bold">NEXT TEAM'S MATCH</span>
                         </div>
                         <div class="dates d-flex flex-column">
@@ -561,7 +561,7 @@
                                     <td class="game_team game_match" v-else @click="showGame(`u5-u6`)">U5 and U6</td>
                                 </tr>
                                 <tr>
-                                    <td class="game_team_odd game_match my_team" v-if="myTeam === 'U4' || myTeam === 'U1'" @click="showGame(`u6-u1`)">U4 and U1</td>
+                                    <td class="game_team_odd game_match my_team" v-if="myTeam === 'U4' || myTeam === 'U1'" @click="showGame(`u4-u1`)">U4 and U1</td>
                                     <td class="game_team_odd game_match" v-else @click="showGame(`u6-u1`)">U4 and U1</td>
                                 </tr>
                                 <tr class="game_info 9-8" v-if="game === `game_info 9-8` || game === `u5-u6`">
@@ -617,7 +617,7 @@
                                     <td class="game_day_odd 1 3 2 6" v-if="teamFilter === `all`" @click="showGame(`game_info 9-22`)" rowspan="2">09/22</td>
                                     <td class="game_day_odd 1 3 2 6" v-if="teamFilter == 1 || teamFilter == 3" @click="showGame(`u1-u3`)" rowspan="2">09/22</td>
                                     <td class="game_day_odd 1 3 2 6" v-if="teamFilter == 2 || teamFilter == 6" @click="showGame(`u2-u6`)" rowspan="2">09/22</td>
-                                    <td class="game_team game_match my-team" v-if="myTeam === 'U1' || myTeam === 'U3'" @click="showGame(`u1-u3`)">U1 and U3</td>
+                                    <td class="game_team game_match my_team" v-if="myTeam === 'U1' || myTeam === 'U3'" @click="showGame(`u1-u3`)">U1 and U3</td>
                                     <td class="game_team game_match" v-else @click="showGame(`u1-u3`)">U1 and U3</td>
                                 </tr>
                                 <tr>
@@ -1269,23 +1269,23 @@
                     <div class="w-100">
                         <h4 class="text-light text-center mb-3">Welcome Back!</h4>
                         <div class="button_container d-flex flex-column align-items-stretch gap-3">
-                            <button class="d-flex">
+                            <button class="d-flex" @click="loaderToggle()">
                                 <picture>
                                     <img src="./assets/img/google.png" alt="">
-                            </picture>
-                            <span class="m-auto">Google</span>
+                                </picture>
+                                <span class="m-auto">Google</span>
                             </button>
-                            <button class="d-flex">
+                            <button class="d-flex" @click="loaderToggle()">
                                 <picture>
                                     <img src="./assets/img/facebook.png" alt="">
-                            </picture>
-                            <span class="m-auto">Facebook</span>
+                                </picture>
+                                <span class="m-auto">Facebook</span>
                             </button>
-                            <button class="d-flex">
+                            <button class="d-flex" @click="loaderToggle()">
                                 <picture>
                                     <img src="./assets/img/apple.png" alt="">
-                            </picture>
-                            <span class="m-auto">Apple</span>
+                                </picture>
+                                <span class="m-auto">Apple</span>
                             </button>
                         </div>
                         <hr class="w-75 mx-auto">

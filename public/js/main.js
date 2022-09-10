@@ -4,15 +4,15 @@ createApp({
     data() {
         return {
             screen: '',
-            page: 'home',
+            page: 'games',
             about: '',
             game: '',
-            log: false,
+            log: true,
             name: '',
             userName: '',
-            email: '',
-            password: '',
-            myTeam: '',
+            email: 'tomascarrizo.dev@gmail.com',
+            password: 'contraseña',
+            myTeam: 'U1',
             teamFilter: 'all',
             gender: '',
             grade: '',
@@ -70,26 +70,41 @@ createApp({
         this.newProfile.myTeam = this.myTeam
     },
     mounted: function() {
-        this.loader()
         if (this.screen === '') {
             this.header()
             if (this.page === 'games') {
                 this.gameTable()
             }
-            if (this.newProfile.password === this.password) {
-                this.changeProfile()
-            } else if (this.newProfile.password === '') {
-                this.changeProfile()
-            } else if (this.newProfile.password !== this.password) {
-                this.wrongPassword = true
-        }}
+            // if (this.newProfile.password === this.password) {
+            //     this.changeProfile()
+            // } else if (this.newProfile.password === '') {
+            //     this.changeProfile()
+            // } else if (this.newProfile.password !== this.password) {
+            //     this.wrongPassword = true
+            // }
+            }
+        this.loader()
     },
     methods: {
         loader: function () {
             document.querySelector('#loading').classList.add('d-none')
         },
+        loaderToggle: function() {
+            document.querySelector('#loading').classList.toggle('d-none')
+            // hideLoad()
+            // let base = createApp.data.return
+            setTimeout(function() {
+                // console.log(page);
+                document.querySelector('#loading').classList.toggle('d-none')
+            }, 3000)
+            this.screen = ''
+            this.page = 'home'
+            this.log = true
+            this.wrong = false
+            this.myTeam = 'U1'
+        },
         header: function() {
-            if (this.log) {document.querySelector('#header').classList.replace('justify-content-between', 'justify-content-evenly')}
+            this.log ? document.querySelector('#header').classList.replace('justify-content-between', 'justify-content-evenly') : document.querySelector('#header').classList.replace('justify-content-evenly', 'justify-content-between')
         },
         gameTable: function() {
             const allMatches = document.querySelectorAll('.game_match')
@@ -332,35 +347,41 @@ createApp({
             this.page = 'home'
         },
         logIn: function() {
-            if (this.loggedIn.email === this.email) {
-                this.wrong = false
-                if (this.loggedIn.password === this.password) {
-                    this.screen = ''
-                    this.page = 'home'
-                    this.log = true
-                    this.wrong = false
-                } else if (this.loggedIn.password === '') {
-                    this.invalid = true
-                    console.log('Please enter password');
-                    // document.querySelector('#wrong').classList.replace('bg-danger', 'bg-warning')
-                    // document.querySelector('#invalid_msg').innerHTML = 'Please, enter a password'
-                } else if (this.loggedIn.password !== this.password) {
-                    this.wrong = true
-                    console.log('Wrong password, please try again');
-                    // document.querySelector('#wrong').classList.replace('bg-warning', 'bg-danger')
-                    // document.querySelector('#wrong_msg').innerHTML = 'Wrong password'
-                }
-            } else if (this.loggedIn === '') {
-                this.invalid = true
-                console.log('Please enter email');
-                // document.querySelector('#wrong').classList.replace('bg-danger', 'bg-warning')
-                // document.querySelector('#invalid_msg').innerHTML = 'Please, enter a valid email'
-            } else {
-                console.log('Wrong email direction');
-                this.wrong = true
-                // document.querySelector('#wrong').classList.replace('bg-warning', 'bg-danger')
-                // document.querySelector('#wrong_msg').innerHTML = 'Wrong email'
-            }
+            this.loader()
+            this.screen = ''
+            this.page = 'home'
+            this.log = true
+            this.wrong = false
+            this.myTeam = 'U1'
+            // if (this.loggedIn.email === this.email) {
+            //     this.wrong = false
+            //     if (this.loggedIn.password === this.password) {
+            //         this.screen = ''
+            //         this.page = 'home'
+            //         this.log = true
+            //         this.wrong = false
+            //     } else if (this.loggedIn.password === '') {
+            //         this.invalid = true
+            //         console.log('Please enter password');
+            //         // document.querySelector('#wrong').classList.replace('bg-danger', 'bg-warning')
+            //         // document.querySelector('#invalid_msg').innerHTML = 'Please, enter a password'
+            //     } else if (this.loggedIn.password !== this.password) {
+            //         this.wrong = true
+            //         console.log('Wrong password, please try again');
+            //         // document.querySelector('#wrong').classList.replace('bg-warning', 'bg-danger')
+            //         // document.querySelector('#wrong_msg').innerHTML = 'Wrong password'
+            //     }
+            // } else if (this.loggedIn === '') {
+            //     this.invalid = true
+            //     console.log('Please enter email');
+            //     // document.querySelector('#wrong').classList.replace('bg-danger', 'bg-warning')
+            //     // document.querySelector('#invalid_msg').innerHTML = 'Please, enter a valid email'
+            // } else {
+            //     console.log('Wrong email direction');
+            //     this.wrong = true
+            //     // document.querySelector('#wrong').classList.replace('bg-warning', 'bg-danger')
+            //     // document.querySelector('#wrong_msg').innerHTML = 'Wrong email'
+            // }
         },
         signUp: function() {
             this.email = this.signProfile.email

@@ -472,3 +472,20 @@ input[type="radio"], input[type="checkbox"] {
     background: linear-gradient(90deg, #00A3FF, #0047FF, #00A3FF, #0047FF) !important;
     color: #fff !important;
 }
+
+/*! ------------------------ MQUERIES ----------------------- */
+
+@media screen and (orientation: landscape) {
+    #aside {
+        flex-direction: row !important;
+        justify-content: space-around !important;
+        /* margin: 0 auto !important; */
+        height: 60vh;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 15%;
+        margin: auto;
+    }
+}
