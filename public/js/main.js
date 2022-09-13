@@ -4,10 +4,10 @@ createApp({
     data() {
         return {
             screen: '',
-            page: 'rules_log',
+            page: 'home',
             about: '',
             game: '',
-            log: true,
+            log: false,
             name: '',
             userName: '',
             email: 'tomascarrizo.dev@gmail.com',
