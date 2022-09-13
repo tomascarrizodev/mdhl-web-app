@@ -233,6 +233,16 @@ table {
     text-decoration: none;
 }
 
+.rules>button {
+    border: none;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+}
+li {
+    margin-bottom: .5rem;
+}
+
 /** Registration */
 fieldset {
     margin-bottom: 1.5rem;
@@ -386,6 +396,14 @@ input[type="radio"], input[type="checkbox"] {
     background-color: var(--yellow);
 }
 
+.btn_close {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: #fff;
+    background-color:rgb(204, 0, 0);
+}
+
 /*! NAVIGATION */
 
 #nav {
@@ -479,7 +497,6 @@ input[type="radio"], input[type="checkbox"] {
     #aside {
         flex-direction: row !important;
         justify-content: space-around !important;
-        /* margin: 0 auto !important; */
         height: 60vh;
         position: absolute;
         left: 0;
@@ -487,5 +504,26 @@ input[type="radio"], input[type="checkbox"] {
         bottom: 0;
         top: 15%;
         margin: auto;
+    }
+    #aside_log {
+        flex-direction: row !important;
+        height: 60vh;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 15%;
+        margin: auto;
+    }
+    #header {
+        padding: .5rem 3rem;
+        justify-content: space-between !important;
+    }
+    #title {
+        display: none;
+    }
+
+    #nav>a>span {
+        display: none;
     }
 }

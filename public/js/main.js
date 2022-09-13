@@ -4,7 +4,7 @@ createApp({
     data() {
         return {
             screen: '',
-            page: 'games',
+            page: 'rules_log',
             about: '',
             game: '',
             log: true,
@@ -62,7 +62,8 @@ createApp({
                 password: '',
                 confirmPassword: '',
                 myTeam: ''
-            }
+            },
+            rules: ''
         }
     },
     created() {
@@ -129,9 +130,14 @@ createApp({
             const allLinks = document.querySelectorAll('.icon')
             allLinks.forEach(e => e.classList.remove('page'))
             this.page = element
-            document.querySelector(`#${element}`).classList.add('page')
-            if (element === 'games') {
-                this.gameTable()
+            if (element === 'home' || element === 'about' || element === 'games' || element === 'rules' || element === 'contact') {
+                document.querySelector(`#${element}`).classList.add('page')
+                if (element === 'games') {
+                    this.gameTable()
+                }
+            }
+            else if (element === 'user' || element === 'about_log' || element === 'rules_log' || element === 'contact_log') {
+                document.querySelector(`#user`).classList.add('page')
             }
         },
         showAbout: function(about, arrow) {
@@ -247,21 +253,19 @@ createApp({
             document.querySelector('#nav').classList.toggle('hide_nav')
             document.querySelector('#principal').classList.toggle('d-none')
             // document.querySelector('#back_top').classList.toggle('d-none')
-            
             if (p === 'user') {
                 this.page = p
-                document.querySelector('#userName').value = this.userName
-                // document.querySelector('#userPass').value = '**********'
-                // document.querySelector('#userConfirmPass').value = '**********'
-                document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
-                // this.profileUser()
+                // document.querySelector('#userName').value = this.userName
+                // document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
+                this.toggleClass(p)
             } else if (p === 'about_log') {
+                this.toggleClass(p)
                 this.page = p
             } else if (p === 'rules_log') {
+                this.toggleClass(p)
                 this.page = p
-                // document.querySelector('#rules_log').classList.toggle('d-none')
-
             } else if (p === 'contact_log') {
+                this.toggleClass(p)
                 this.page = p
             } else if (p === 'log_out') {
                 this.log = false
@@ -395,6 +399,15 @@ createApp({
             this.log = true
             this.screen = ''
             this.page = 'home'
+        },
+        showRule: function(param) {
+            if (this.rules === '') {
+                this.rules = param
+            } else if (this.rules === param) {
+                this.rules = ''
+            } else if (this.rules !== param) {
+                this.rules = param
+            }
         }
     },
     computed: {
