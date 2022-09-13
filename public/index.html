@@ -830,7 +830,7 @@
                             </fieldset>
                             <fieldset>
                                 <legend>Gender</legend>
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between justify-content-sm-around">
                                     <button v-if="gender === '' || gender === 'non_binary' || gender === 'male'" @click="genderSelect(`female`)" id="label_femenine">Female</button>
                                     <span v-if="gender === 'female'" id="label_femenine" class="female_selected text-dark fw-bold">Female</span>
                                     <button v-if="gender === '' || gender === 'male' || gender === 'female'" @click="genderSelect(`non_binary`)" id="label_non_binary">Non-Binary</button>
@@ -841,7 +841,7 @@
                             </fieldset>
                             <fieldset>
                                 <legend>Grade</legend>
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between justify-content-sm-around">
                                     <div class="d-flex flex-column align-items-center gap-3">
                                         <button v-if="grade !== 'preschool'" class="non_selected" @click="gradeSelect(`preschool`)">Pre-school</button>
                                         <span v-if="grade === 'preschool'" class="non_selected selected">Pre-school</span>
@@ -924,7 +924,7 @@
                                 </div>
                             </fieldset>
                             <fieldset>
-                                <label for="uniform_already" class="d-flex justify-content-evenly align-items-center">
+                                <label for="uniform_already" class="d-flex justify-content-evenly align-items-center mt-3">
                                     <span>Already have an uniform</span>
                                     <span class="checkbox" v-if="checkbox === false" @click="checkbox = true"></span>
                                     <span class="checkbox checkbox_checked text-light" v-if="checkbox === true" @click="checkbox = false"></span>
@@ -1035,7 +1035,7 @@
                                         <p class="m-auto text-center">Not matching Passwords</p>
                                     </div>
                                 </div> -->
-                                <select name="" id="" v-model="newProfile.myTeam">
+                                <select name="" id="" v-model="myTeam">
                                     <option value="U1" id="U1">U1</option>
                                     <option value="U2" id="U2">U2</option>
                                     <option value="U3" id="U3">U3</option>
@@ -1520,7 +1520,7 @@
                                 <input type="text" placeholder="User Name" v-model="signProfile.userName"  required/>
                                 <input type="text" placeholder="Password" v-model="signProfile.password"  required/>
                                 <input type="text" placeholder="Confirm Password" v-model="signProfile.confirmPassword"  required/>
-                                <select name="" id="" v-model="signProfile.myTeam" required>
+                                <select name="" id="" v-model="myTeam" required>
                                     <option value="" selected disabled>Select your Team</option>
                                     <option value="U1">U1</option>
                                     <option value="U2">U2</option>

@@ -180,7 +180,6 @@ table {
 .send_email, .download_pdf {
     border: none;
     width: 46%;
-    /* height: 15%; */
     padding: 1px;
     padding-left: 6px;
     font-size: 10pt;
@@ -525,5 +524,13 @@ input[type="radio"], input[type="checkbox"] {
 
     #nav>a>span {
         display: none;
+    }
+
+    #bg_image {
+        left: -15%;
+        top: 10%;
+    }
+    #bg_image img {
+        height: 60vh;
     }
 }
