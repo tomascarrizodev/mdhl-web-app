@@ -206,6 +206,76 @@ table {
     width: 1.7rem;
 }
 
+.game_btn_container > button {
+    border: none;
+    border-radius: 1rem;
+    padding: 2% 5%;
+    color: #fff;
+    background-color: #555;
+}
+
+.game_btn_container > button.selected_month {
+    background-color: #05A774;
+}
+
+.match_day {
+    background-color: var(--dark);
+    border-radius: .5rem;
+}
+
+.match_day > div {
+    padding: .5rem 0;
+}
+
+.btn_sm {
+    border: none;
+    border-radius: .2rem;
+    background-color: #0047FF;
+    color: #fff;
+    padding: 2px 5px;
+}
+
+.bg_container {
+    /* position: relative; */
+    height: 14rem;
+    background: url('../assets/img/hockey_7.jpg');
+    background-position: 85% 100%;
+    background-size: 40rem;
+    border-radius: .5rem;
+}
+.bg_container > picture {
+    background-color: #252525;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    margin: .7rem .3rem;
+}
+.bg_mask {
+    height: 6rem;
+    background: linear-gradient(to top, #252525 30%, #00000000 60%);
+}
+
+.bg_match {
+    position: absolute;
+}
+.match_day_hour {
+    background-color: #151515;
+    padding: .2rem .5rem;
+    border-radius: 1rem;
+}
+.map {
+    width: 80%;
+    border-radius: .5rem;
+}
+
+.comment {
+    padding: 1.5rem 1rem;
+    background-color: #1f1f1f;
+    border-radius: 1rem;
+}
+
+
+
 /** Rules */
 
 #rules_top {
@@ -353,6 +423,43 @@ input[type="radio"], input[type="checkbox"] {
     font-style: italic;
     background-color: #555 !important;
     color: #ccc !important;
+}
+
+/** Sing Up */
+
+.select_container {
+    position: relative;
+}
+
+.select_team {
+    background-color: #777;
+    padding: .5rem 0;
+    border-radius: .5rem;
+}
+.select_team > img {
+    filter: invert(1);
+}
+.arrow_close {
+    transform: rotateZ(180deg);
+}
+
+.option_team {
+    z-index: 1;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    background-color: #333;
+    border-radius: .5rem;
+}
+.option_team > span {
+    width: 100%;
+    padding: .2rem 1rem;
+}
+.option_selected {
+    background-color: #05A774;
+}
+.team_selected {
+    background-color: #14654E;
 }
 
 /*! ASIDE */

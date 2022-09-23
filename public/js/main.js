@@ -4,10 +4,10 @@ createApp({
     data() {
         return {
             screen: '',
-            page: 'home',
+            page: 'match',
             about: '',
             game: '',
-            log: false,
+            log: true,
             name: '',
             userName: '',
             email: 'tomascarrizo.dev@gmail.com',
@@ -29,6 +29,7 @@ createApp({
                 goalkeeper: false
             },
             checkbox: false,
+            teamSelect: false,
             jersey: '',
             shorts: {
                 youth_sm: false,
@@ -63,7 +64,8 @@ createApp({
                 confirmPassword: '',
                 myTeam: ''
             },
-            rules: ''
+            rules: '',
+            month: 'sep'
         }
     },
     created() {
@@ -73,16 +75,7 @@ createApp({
     mounted: function() {
         if (this.screen === '') {
             this.header()
-            if (this.page === 'games') {
-                this.gameTable()
-            }
-            // if (this.newProfile.password === this.password) {
-            //     this.changeProfile()
-            // } else if (this.newProfile.password === '') {
-            //     this.changeProfile()
-            // } else if (this.newProfile.password !== this.password) {
-            //     this.wrongPassword = true
-            // }
+            this.page === 'games' ? this.gameTable() : 0;
             }
         this.loader()
     },
@@ -218,19 +211,6 @@ createApp({
                 })
             }
         },
-        selected: function(g) {
-            console.log(this.gender)
-
-            // const selection = document.querySelector(`#${label}`)
-            // // console.log(selection);
-            // if (selection.id === 'label_femenine') {
-            //     selection.setAttribute('style', 'background-color: pink !important; color: black !important; font-weight: bold !important;')
-            // } else if (selection.id === 'label_non_binary') {
-            //     selection.setAttribute('style', 'background-color: limegreen !important; color: black !important; font-weight: bold !important;')
-            // } else if (selection.id === 'label_male') {
-            //     selection.setAttribute('style', 'background-color: var(--sapphire) !important; color: black !important; font-weight: bold !important;')
-            // }
-        },
         genderSelect: function(g) {
             this.gender = g
         },
@@ -247,16 +227,13 @@ createApp({
                 }})
         },
         showLog: function(p) {
-            document.querySelector('#user_on').classList.toggle('d-none')
-            document.querySelector('#user').classList.toggle('d-none')
+            // document.querySelector('#user_on').classList.toggle('d-none')
+            // document.querySelector('#user').classList.toggle('d-none')
             document.querySelector('#aside_log').classList.toggle('show')
             document.querySelector('#nav').classList.toggle('hide_nav')
             document.querySelector('#principal').classList.toggle('d-none')
-            // document.querySelector('#back_top').classList.toggle('d-none')
             if (p === 'user') {
                 this.page = p
-                // document.querySelector('#userName').value = this.userName
-                // document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
                 this.toggleClass(p)
             } else if (p === 'about_log') {
                 this.toggleClass(p)
@@ -274,13 +251,6 @@ createApp({
             document.querySelector('#rules_log').classList.toggle('d-none')
 
         },
-        // profileUser: function() {
-        //     document.querySelector('#userName').placeholder = this.userName
-        //     document.querySelector('#userPass').placeholder = '**********'
-        //     document.querySelector('#userConfirmPass').placeholder = '**********'
-        //     document.querySelector(`#${this.myTeam}`).setAttribute('selected', 'true')
-            
-        // },
         showPass: function() {
             
             if (this.showPassword) {
@@ -408,6 +378,33 @@ createApp({
             } else if (this.rules !== param) {
                 this.rules = param
             }
+        },
+        select: function () {
+            !this.teamSelect ? 
+            this.teamSelect = true : this.teamSelect = false;
+            let arrow = document.querySelector('#arrow_select')
+            arrow.classList.toggle('arrow_close')
+        },
+        optionTeam: function (team) {
+            this.teamSelect = false
+            this.myTeam = team
+            let arrow = document.querySelector('#arrow_select')
+            arrow.classList.toggle('arrow_close')
+            let allTeams = document.querySelectorAll('.option')
+            allTeams.forEach(e => {
+                e.classList.remove('option_selected')
+                if (e.classList.contains(team)) {
+                    e.classList.add('option_selected')
+                }
+            })
+            let shownTeam = document.querySelector('#team_shown')
+            shownTeam.classList.add('text-uppercase', 'fw-bold')
+            shownTeam.innerHTML = team
+            let select = document.querySelector('.select_team')
+            select.classList.add('team_selected')
+        },
+        showMatch: function () {
+            
         }
     },
     computed: {

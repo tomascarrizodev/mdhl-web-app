@@ -3,6 +3,7 @@
 *.zip
 edits
 tomi
+auth
 .firebase
 .firebaserc
 firebase.json
